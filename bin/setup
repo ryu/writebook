@@ -12,6 +12,7 @@ FileUtils.chdir APP_ROOT do
   puts "== Installing dependencies =="
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
+  system("rbenv rehash")
 
   puts "\n== Preparing database =="
   system! "bin/rails db:prepare"

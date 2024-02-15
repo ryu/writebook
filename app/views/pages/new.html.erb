@@ -1,5 +1,1 @@
-<%= form_with model: [ @book, @page ] do |form| %>
-  <%= form.text_field :title %><br>
-  <%= form.text_area :body %><br>
-  <%= form.submit "Create" %>
-<% end %>
+<%= render "pages/form", book: @book, page: @page %>

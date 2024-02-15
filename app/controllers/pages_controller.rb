@@ -20,6 +20,8 @@ class PagesController < ApplicationController
   end
 
   def update
+    @leaf.update! leafable: new_page
+    redirect_to @book
   end
 
   def destroy

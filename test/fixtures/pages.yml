@@ -1,3 +1,7 @@
 welcome:
   title: Welcome to The Handbook!
   body: This is such a great handbook.
+
+summary:
+  title: Summary
+  body: Thanks for reading!

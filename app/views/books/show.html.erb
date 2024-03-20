@@ -1,16 +1,87 @@
-<h1><%= @book.title %></h1>
-
-<ul>
-  <% @leaves.each do |leaf| %>
-    <li><%= link_to leaf.title, leafable_path(leaf) %></li>
+<nav>
+  <%= link_to books_path, class: "btn flex-item-justify-start" do %>
+    <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Go back</span>
   <% end %>
-</ul>
 
+  <div class="flex gap breadcrumbs" style="--column-gap: 0.5ch;">
+    <a href="index.html">
+      <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
+    </a> ▸
+    <strong><%= @book.title %></strong>
+  </div>
 
-<p>New:
-  <%= link_to "Page", new_book_page_path(@book) %>
-  <%= link_to "Section", new_book_section_path(@book) %>
-  <%= link_to "Picture", new_book_picture_path(@book) %>
-</p>
+  <button class="btn txt-medium flex-item-justify-end">
+    <%= image_tag "download.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Download</span>
+  </button>
 
-<%= link_to "Back", books_path %>
+  <button class="btn txt-medium">
+    <%= image_tag "share.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Share</span>
+  </button>
+</nav>
+
+<main>
+  <section class="book-page">
+    <aside class="txt-align-center">
+      <%= image_tag "default-cover.svg", alt: "Book cover", class: "book-cover margin-none" %>
+
+      <div class="flex-inline align-center gap center margin-block-start pad-inline pad-block-half fill-shade border-radius">
+        <%= image_tag "lock.svg", aria: { hidden: true }, size: 36 %>
+
+        <label for="publication" class="switch txt-medium">
+          <input type="checkbox" id="publication" class="switch__input" checked="checked">
+          <span class="switch__btn round"></span>
+          <span class="for-screen-reader">Publish this book</span>
+        </label>
+
+        <%= image_tag "world.svg", aria: { hidden: true }, size: 36 %>
+      </div>
+    </aside>
+    <div class="full-width">
+      <h1 class="txt-xx-large margin-block-none flex flex-column gap" style="row-gap: 0.1lh;">
+        <strong><%= @book.title %></strong>
+        <small class="txt-normal txt-large txt-tight-lines">Subtitle</small>
+        <small class="txt-normal txt-large translucent txt-tight-lines">by Author</small>
+      </h1>
+
+      <ol class="unpad toc--list">
+        <% @leaves.each do |leaf| %>
+          <li>
+            <%= link_to leaf.title, leafable_path(leaf) %>
+            <small class="wordcount translucent">200 words</small>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <menu class="full-width position-relative flex align-center justify-center" data-controller="popup">
+    <button class="btn btn--reversed", data-action="popup#toggle">
+      <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "colorize--white" %>
+      <span class="for-screen-reader">Add a new page</span>
+    </button>
+
+    <dialog id="new-page-picker" class="page-type-picker" data-popup-target="popup" data-action="click->popup#close">
+      <div class="flex align-center justify-center gap">
+        <%= link_to new_book_page_path(@book), class: "btn btn--plain txt-x-large" do %>
+          <%= image_tag "page-text.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
+          <span class="for-screen-reader">Add a new text page</span>
+        <% end %>
+
+        <%= link_to new_book_picture_path(@book), class: "btn btn--plain txt-x-large" do %>
+          <%= image_tag "page-image.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
+          <span class="for-screen-reader">Add a photo page</span>
+        <% end %>
+
+        <%= link_to new_book_section_path(@book), class: "btn btn--plain txt-x-large" do %>
+          <%= image_tag "page-chapter.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
+          <span class="for-screen-reader">Add a section</span>
+        <% end %>
+      </div>
+    </dialog>
+  </menu>
+</footer>

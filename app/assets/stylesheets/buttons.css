@@ -55,6 +55,11 @@
   }
 }
 
+/* Variants */
+.btn--plain {
+  --btn-border-size: 0;
+  --btn-padding: 0;
+}
 .btn--reversed {
   --btn-background: var(--color-text);
   --btn-border-color: var(--color-bg);

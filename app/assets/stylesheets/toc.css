@@ -12,7 +12,7 @@
       content: "";
       block-size: 1em;
       inline-size: 1em;
-      background: url(../images/handle.svg) no-repeat center center;
+      background: url(handle.svg) no-repeat center center;
       background-size: 0.8em;
       display: inline-flex;
       opacity: 0.2;

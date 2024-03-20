@@ -1,3 +1,29 @@
-<%= render "sections/form", book: @book, section: @section %>
+<nav>
+  <%= link_to leafable_path(@leaf), class: "btn flex-item-justify-start" do %>
+    <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Go back</span>
+  <% end %>
 
-<%= render "leaves/delete", leaf: @leaf %>
+  <div class="flex gap breadcrumbs align-end" style="--column-gap: 0.5ch;">
+    <%= link_to books_path do %>
+      <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
+    <% end %> ▸
+    <%= link_to @book.title, @book %> ▸
+    <strong><%= @section.title %></strong>
+  </div>
+
+  <button type="submit" form="section-editor", class="btn flex-item-justify-end">
+    <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Save</span>
+  </button>
+</nav>
+
+<main>
+  <div class="page">
+    <%= render "sections/form", book: @book, section: @section %>
+  </div>
+</main>
+
+<footer>
+  <%= render "leaves/delete", leaf: @leaf %>
+</footer>

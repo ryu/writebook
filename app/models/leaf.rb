@@ -11,4 +11,5 @@ class Leaf < ApplicationRecord
   positioned_within :book, association: :leaves
 
   scope :with_leafables, -> { includes(:leafable) }
+  scope :excluding_trashed, -> { where.not(status: :trashed) }
 end

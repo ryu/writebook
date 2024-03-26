@@ -2,18 +2,22 @@ welcome_section:
   book: handbook
   leafable: welcome (Section)
   position_score: 1
+  status: published
 
 welcome_page:
   book: handbook
   leafable: welcome (Page)
   position_score: 2
+  status: published
 
 summary_page:
   book: handbook
   leafable: summary (Page)
   position_score: 3
+  status: published
 
 reading_picture:
   book: handbook
   leafable: reading (Picture)
   position_score: 4
+  status: published

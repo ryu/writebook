@@ -22,7 +22,7 @@ class SectionsController < ApplicationController
   end
 
   def destroy
-    @leaf.destroy
+    @leaf.trashed!
     redirect_to @book
   end
 

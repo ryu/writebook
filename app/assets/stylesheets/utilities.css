@@ -65,6 +65,7 @@
 /* Sizing */
 .full-width { inline-size: 100%; }
 .min-width { min-inline-size: 0; }
+.half-width { inline-size: 50%; }
 .max-width { max-inline-size: 100%; }
 .min-content { inline-size: min-content; }
 .max-inline-size { max-inline-size: 100%; }

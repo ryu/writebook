@@ -46,6 +46,12 @@ a:not([class]) {
   background-color: var(--color-selected);
 }
 
+:where(ul, ol):where([role="list"]) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .breadcrumbs {
   display: flex;
   gap: 0.5ch;

@@ -2,7 +2,7 @@ module EditsHelper
   def edit_action_name(edit)
     case edit.action
     when "creation" then "Created"
-    when "revision" then "Revised"
+    when "revision" then "Edited"
     when "trash" then "Trashed"
     end
   end

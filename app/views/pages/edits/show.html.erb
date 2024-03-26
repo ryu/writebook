@@ -1,5 +1,26 @@
-<div class="page">
-  <p>Changes in this version:</p>
-  <h2 class="diff"><%= format_diff_changes(@edit.generate_diff(:title)) %></h2>
-  <div class="diff"><%= format_diff_changes(@edit.generate_diff(:body)) %></div>
-</div>
+<% content_for(:title) { "Changes to #{ @page.title }" } %>
+<% @layout_class = "page" %>
+
+<% content_for :header do %>
+  <nav>
+    <%= link_to books_path, class: "btn flex-item-justify-start" do %>
+      <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Go back</span>
+    <% end %>
+
+    <div class="breadcrumbs flex-item-justify-start">
+      <%= link_to books_path do %>
+        <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
+      <% end %> ▸
+      <%= link_to @book.title, @book %> ▸
+      <strong><%= @edit.leafable.title %></strong>
+    </div>
+  </nav>
+<% end %>
+
+<header class="txt-align-center">
+  <span class="btn btn--reversed txt-medium center">Changes in this version</span>
+</header>
+
+<h1><%= format_diff_changes(@edit.generate_diff(:title)) %></h1>
+<%= format_diff_changes(@edit.generate_diff(:body)) %>

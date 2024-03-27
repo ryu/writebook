@@ -9,6 +9,18 @@
   padding-inline: var(--inline-space);
   text-align: start;
 
+  &.book {
+    column-gap: 3dvw;
+    display: grid;
+    grid-template-columns: minmax(200px, 18dvw) 1fr;
+    inline-size: 120ch;
+    padding-inline: clamp(2ch, 8%, 10ch);
+
+    @media (max-width: 80ch) {
+      grid-template-columns: 1fr;
+    }
+  }
+
   &.page {
     inline-size: 60ch;
     padding-inline: clamp(var(--inline-space), 5cqi, calc(var(--inline-space) * 3));

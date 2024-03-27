@@ -52,18 +52,6 @@ a:not([class]) {
   list-style: none;
 }
 
-.breadcrumbs {
-  display: flex;
-  gap: 0.5ch;
-  min-width: 0;
-
-  > * {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
 .skip-navigation {
   --left-offset: -999em;
 

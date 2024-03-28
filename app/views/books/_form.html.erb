@@ -1,5 +1,6 @@
 <%= form_with model: book, id: "book-editor" do |form| %>
   <%= form.file_field :cover, class: "input input--file" %>
-  <%= form.text_field :title, required: true, autofocus: true, class: "input full-width" %>
+  <%= form.text_field :title, required: true, autofocus: true, class: "input full-width", placeholder: "Title" %>
+  <%= form.text_field :subtitle, class: "input full-width", placeholder: "Subtitle" %>
   <%= form.submit "Save", hidden: true %>
 <% end %>

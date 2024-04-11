@@ -86,8 +86,11 @@
     font-size: inherit;
     gap: var(--inline-space);
     inline-size: fill-available;
-    text-decoration: underline;
     white-space: nowrap;
+
+    &:is(a) {
+      text-decoration: underline;
+    }
 
     &::after {
       border-block-end: 1px dotted var(--color-border-darker);

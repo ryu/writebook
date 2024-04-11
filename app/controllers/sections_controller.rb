@@ -23,7 +23,11 @@ class SectionsController < ApplicationController
 
   def update
     @leaf.edit section_params
-    redirect_to @book
+
+    respond_to do |format|
+      format.turbo_stream { render }
+      format.html { redirect_to leafable_url(@leaf) }
+    end
   end
 
   def destroy

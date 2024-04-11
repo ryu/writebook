@@ -23,7 +23,11 @@ class PagesController < ApplicationController
 
   def update
     @leaf.edit page_params
-    redirect_to leafable_url(@leaf)
+
+    respond_to do |format|
+      format.turbo_stream { render }
+      format.html { redirect_to leafable_url(@leaf) }
+    end
   end
 
   def destroy

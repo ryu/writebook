@@ -8,12 +8,14 @@
       <span class="for-screen-reader">Cancel</span>
     <% end %>
 
-    <div class="breadcrumbs">
-      <%= link_to books_path do %>
-        <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
-      <% end %> ▸
-      <%= link_to @book.title, @book %> ▸
-      <strong><%= @page.title %></strong>
+    <div class="breadcrumbs ">
+      <%= form_with model: [ @book, @page ], class: "flex align-center gap-half" do |form| %>
+        <%= form.text_field :title, class: "input full-width" %>
+        <%= tag.button type: "submit", class: "btn txt-small" do %>
+          <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+          <span class="for-screen-reader">Save</span>
+        <% end %>
+      <% end %>
     </div>
 
     <button type="submit" form="page-editor", class="btn flex-item-justify-end">

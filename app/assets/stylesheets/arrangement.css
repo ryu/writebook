@@ -1,3 +1,12 @@
+.toc__handle {
+  display: none;
+
+  .toc__container:where(:has(#toc-list:checked) :has(#arrange-mode:checked)) & {
+    display: block;
+  }
+}
+
+
 .toc__container:where(:has(#arrange-mode:checked)) {
   .toc__leaf * {
     pointer-events: none;

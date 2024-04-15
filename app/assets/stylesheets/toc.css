@@ -126,8 +126,4 @@
   display: none;
   margin: auto;
   opacity: 0.3;
-
-  .toc__container:where(:has(#toc-list:checked)) & {
-    display: block;
-  }
 }

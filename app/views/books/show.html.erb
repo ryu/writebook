@@ -83,37 +83,43 @@
 
 <%= arrangement_tag @book, class: "toc__container full-width txt-align-center" do %>
   <h1 class="txt-align-start txt-xx-large margin-block-none flex flex-column gap" style="row-gap: 0.1lh;">
-    <strong><%= @book.title %></strong>
+    <strong class="flex align-center gap-half">
+      <%= @book.title %>
+
+      <div data-controller="popup" class="txt-medium">
+        <button class="btn txt-small", data-action="popup#toggle">
+          <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
+          <span class="for-screen-reader">Edit book details</span>
+        </button>
+
+        <dialog class="dialog panel" data-popup-target="popup">
+          <%= render "books/form", book: @book %>
+          <div class="flex align-center gap margin-block-start">
+            <form method="dialog" class="flex-item-justify-start">
+              <button class="btn btn--negative txt-medium">
+                <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
+                <span class="for-screen-reader">Cancel and close</span>
+              </button>
+            </form>
+
+            <button type="submit" form="book-editor", class="btn btn--positive txt-medium flex-item-justify-end">
+              <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+              <span class="for-screen-reader">Save</span>
+            </button>
+          </div>
+        </dialog>
+      </div>
+    </strong>
     <small class="txt-normal txt-large txt-tight-lines"><%= @book.subtitle %></small>
     <small class="txt-normal txt-large translucent txt-tight-lines"><%= @book.author %></small>
   </h1>
 
   <div class="flex gap-half">
-    <div data-controller="popup" class="txt-medium">
-      <button class="btn txt-medium", data-action="popup#toggle">
-        <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
-        <span class="for-screen-reader">Edit book details</span>
-      </button>
-
-      <dialog class="dialog panel" data-popup-target="popup">
-        <%= render "books/form", book: @book %>
-        <div class="flex align-center gap margin-block-start">
-          <form method="dialog" class="flex-item-justify-start">
-            <button class="btn btn--negative txt-medium">
-              <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
-              <span class="for-screen-reader">Cancel and close</span>
-            </button>
-          </form>
-
-          <button type="submit" form="book-editor", class="btn btn--positive txt-medium flex-item-justify-end">
-            <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
-            <span class="for-screen-reader">Save</span>
-          </button>
-        </div>
-      </dialog>
-    </div>
-
-    <label><input type="checkbox" name="arrange-mode" id="arrange-mode" data-action="arrangement#setArrangeMode"> Arrange</label>
+    <label class="btn txt-medium flex-item-justify-start">
+      <input type="checkbox" name="arrange-mode" id="arrange-mode" data-action="arrangement#setArrangeMode">
+      <%= image_tag "rearrange.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Rearrange</span>
+    </label>
 
     <label class="btn txt-medium flex-item-justify-end">
       <input type="radio" name="view" id="toc-list" value="list" checked="checked">
@@ -128,7 +134,7 @@
     </label>
   </div>
 
-  <div class="position-relative">
+  <div class="position-relative margin-block-start">
     <div class="toc" tabindex="0" data-arrangement-target="container" data-action="<%= arrangement_actions %>">
       <%= turbo_frame_tag :leaves do %>
         <%= render partial: "leaves/leaf", collection: @leaves, as: :leaf %>

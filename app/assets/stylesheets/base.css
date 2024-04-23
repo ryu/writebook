@@ -2,6 +2,9 @@ html, body {
   --font-sans: system-ui;
   --font-serif: ui-serif, serif;
   --font-mono: ui-monospace, monospace;
+  --hover-color: var(--color-subtle-dark);
+  --hover-size: 0.15em;
+  --hover-filter: brightness(1);
 
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -22,23 +25,35 @@ a:not([class]) {
 
 :is(a, button, input, textarea) {
   --outline-size: max(2px, 0.08em);
-  --outline-style: solid;
-  --outline-color: currentColor;
 
   caret-color: var(--color-link);
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow 150ms ease, outline-offset 150ms ease, background-color 150ms ease, opacity 150ms ease, filter 150ms ease;
 
-  &:focus {
-    outline: var(--outline-size) var(--outline-style) var(--outline-color);
-    outline-offset: var(--outline-offset, var(--outline-size));
+  /* Hover */
+  @media (any-hover: hover) {
+    &:where(:not(:active):hover) {
+      box-shadow: 0 0 0 var(--hover-size) var(--hover-color);
+    }
   }
 
-  &:focus-visible {
-    outline: var(--outline-size) var(--outline-style) var(--outline-color);
-    outline-offset: var(--outline-offset, var(--outline-size));
+  /* Keyboard navigation */
+  &:where(:not(:active)):focus-visible {
+    outline-width: var(--outline-size);
+    outline-color: var(--outline-color, currentColor);
+    outline-offset: var(--outline-offset, calc(var(--outline-size) * 2));
   }
 
+  /* Pressing */
   &:focus:not(:focus-visible) {
-    outline: none;
+    --outline-offset: 0;
+  }
+
+  /* Disabled */
+  &:where([disabled]):not(:hover):not(:active) {
+    cursor: not-allowed;
+    filter: brightness(0.75);
   }
 }
 

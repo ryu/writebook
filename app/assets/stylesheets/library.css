@@ -1,5 +1,6 @@
 .library {
   --gap: clamp(var(--inline-space), 2cqi, calc(var(--inline-space) * 3));
+  --hover-size: 0;
 
   display: grid;
   gap: var(--block-space) var(--gap);

@@ -1,4 +1,6 @@
 .toc {
+  --hover-size: 0;
+
   display: grid;
   font-size: clamp(1rem, 2.5cqi, 1.5rem);
   inline-size: auto;

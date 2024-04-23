@@ -6,7 +6,7 @@
   align-items: center;
   background-color: var(--btn-background, var(--color-ink-reversed));
   border-radius: var(--btn-border-radius, 2em);
-  border: var(--btn-border-size, 1px) solid var(--btn-border-color, var(--color-border-darker));
+  border: var(--btn-border-size, 1px) solid var(--btn-border-color, var(--color-subtle-dark));
   color: var(--btn-color, var(--color-ink));
   cursor: pointer;
   display: inline-flex;

@@ -17,7 +17,7 @@
 }
 
 .page--section {
-  background-color: var(--color-border);
+  background-color: var(--color-subtle);
 }
 
 :is(.page--picture, .page--section) {

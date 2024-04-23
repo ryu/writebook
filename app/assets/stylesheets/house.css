@@ -42,7 +42,7 @@ house-md-toolbar {
     transition: background-color 0.3s ease;
 
     &:is(:focus, :hover) {
-      background-color: var(--color-border-darker);
+      background-color: var(--color-subtle-dark);
     }
 
     &:is(:active) {

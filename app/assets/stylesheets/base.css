@@ -69,7 +69,7 @@ a:not([class]) {
   --panel-size: 40ch;
 
   background-color: var(--color-bg);
-  border: 1px solid var(--color-border-dark);
+  border: 1px solid var(--color-subtle-dark);
   color: var(--color-ink);
   border-radius: var(--border-radius, 1em);
   inline-size: var(--panel-size);

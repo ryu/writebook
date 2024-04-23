@@ -22,7 +22,7 @@
 .txt-ink { color: var(--color-ink); }
 .txt-reversed { color: var(--color-ink-reversed); }
 .txt-negative { color: var(--color-negative); }
-.txt-subtle { color: var(--color-border-darker); }
+.txt-subtle { color: var(--color-subtle-dark); }
 .txt-undecorated { text-decoration: none; }
 .txt-tight-lines { line-height: 1.2; }
 .txt-normal { font-weight: 400; font-style: normal; }
@@ -135,14 +135,14 @@
 .fill { background-color: var(--color-bg); }
 .fill-black { background-color: var(--color-ink); }
 .fill-white { background-color: var(--color-ink-reversed); }
-.fill-shade { background-color: var(--color-border); }
+.fill-shade { background-color: var(--color-subtle-light); }
 .fill-transparent { background-color: transparent; }
 
 .translucent { opacity: var(--opacity, 0.5); }
 
 /* Borders */
-.border { border: var(--border-size, 1px) solid var(--border-color, var(--color-border)); }
-.border-top { border-top: var(--border-size, 1px) solid var(--border-color, var(--color-border)); }
+.border { border: var(--border-size, 1px) solid var(--border-color, var(--color-subtle)); }
+.border-top { border-top: var(--border-size, 1px) solid var(--border-color, var(--color-subtle)); }
 .borderless { border: 0; }
 
 /* Border radius */

@@ -36,5 +36,12 @@
       <%= image_tag "share.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
       <span class="for-screen-reader">Share join link</span>
     <% end %>
+
+    <% if Current.user.can_administer? %>
+      <%= button_to account_join_code_path, class: "btn btn--regenerate" do %>
+        <%= image_tag "refresh.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
+        <span class="for-screen-reader">Regenerate join link</span>
+      <% end %>
+    <% end %>
   </div>
 </div>

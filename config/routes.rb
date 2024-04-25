@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   get "join/:join_code", to: "users#new", as: :join
   post "join/:join_code", to: "users#create"
 
+  resource :account do
+    scope module: "accounts" do
+      resource :join_code, only: :create
+    end
+  end
+
   resources :books do
     resources :leaves
 

@@ -33,6 +33,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal user.id, Session.find_by(token: parsed_cookies.signed[:session_token]).user.id
   end
 
+  test "update" do
+    sign_in :david
+    assert users(:david).administrator?
+
+    put user_url(users(:kevin)), params: { user: { role: "administrator" } }
+
+    assert_redirected_to users_url
+    assert users(:kevin).reload.administrator?
+  end
+
   test "destroy" do
     sign_in :david
 

@@ -22,6 +22,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.update(role_params)
+    redirect_to users_url
   end
 
   def destroy
@@ -30,6 +32,10 @@ class UsersController < ApplicationController
   end
 
   private
+    def role_params
+      { role: params.require(:user)[:role].presence_in(%w[ member administrator ]) || "member" }
+    end
+
     def set_user
       @user = User.active.find(params[:id])
     end

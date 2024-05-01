@@ -1,8 +1,8 @@
-<div class="flex flex-column align-center gap">
-  <% url = join_url(Current.account.join_code) %>
+<div class="flex flex-column align-center gap txt-medium">
+  <% url = book_url(@book) %>
 
   <label class="flex flex-column gap full-width txt-align-center">
-    <strong id="invite_label" class="invite-label">Share to invite more people</strong>
+    <strong id="invite_label" class="invite-label for-screen-reader">Public link to this book</strong>
     <span class="flex align-center gap margin-inline">
       <input type="text" class="input fill-white" id="invite_url" value="<%= url %>" aria-labelledby="invite_label" readonly>
     </span>
@@ -12,7 +12,7 @@
     <div data-controller="popup" class="flex-inline">
       <%= tag.button class: "btn", data: { action: "popup#toggle" } do %>
         <%= image_tag "qr-code.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
-        <span class="for-screen-reader">Show join link QR code</span>
+        <span class="for-screen-reader">Show public link QR code</span>
       <% end %>
 
       <dialog class="dialog panel" data-popup-target="popup" data-action="click->popup#close" style="--panel-size: max-content">
@@ -29,19 +29,12 @@
 
     <%= button_to_copy_to_clipboard(url) do %>
       <%= image_tag "copy-paste.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
-      <span class="for-screen-reader">Copy join link</span>
+      <span class="for-screen-reader">Copy public link</span>
     <% end %>
 
     <%= web_share_button(url, "Link to join Workbook", "Hit this link to join me in Workbook and start writing.") do %>
       <%= image_tag "share.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
-      <span class="for-screen-reader">Share join link</span>
-    <% end %>
-
-    <% if Current.user.can_administer? %>
-      <%= button_to account_join_code_path, class: "btn btn--regenerate" do %>
-        <%= image_tag "refresh.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
-        <span class="for-screen-reader">Regenerate join link</span>
-      <% end %>
+      <span class="for-screen-reader">Share public link</span>
     <% end %>
   </div>
 </div>

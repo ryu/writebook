@@ -4,6 +4,13 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_secure_password validations: false
 
+  has_many :accesses, dependent: :destroy
+  has_many :books, through: :accesses do
+    def editable
+      merge(Access.editor)
+    end
+  end
+
   scope :active, -> { where(active: true) }
 
   def deactivate

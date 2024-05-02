@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :set_accesses, only: %i[ new edit ]
 
   def index
-    @books = Book.ordered
+    @books = Current.user.books.ordered
   end
 
   def new
@@ -11,7 +11,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.create! book_params
+    book = Current.user.books.editable.create! book_params
     redirect_to book
   end
 

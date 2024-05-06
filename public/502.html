@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Starting Workbook…</title>
+    <style>
+      body {
+        --color-white: #fff;
+        --color-black: #000;
+        --color-bg: #0064e6;
+
+        background-color: var(--color-bg);
+        block-size: 100dvh;
+        display: grid;
+        margin: 0;
+        padding: 0;
+        place-items: center;
+      }
+
+      p {
+        animation: pulse 2s infinite;
+        color: var(--color-white);
+        font-size: 36px;
+      }
+
+
+      @keyframes pulse {
+        0% { opacity: 1; }
+        70% { opacity: 1; }
+        85% { opacity: 0.4; }
+        100% { opacity: 1; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>...</p>
+    <script>setTimeout(() => location.reload(), 10000)</script>
+  </body>
+</html>

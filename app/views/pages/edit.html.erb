@@ -4,8 +4,8 @@
 <% content_for :header do %>
   <nav>
     <%= link_to leafable_path(@leaf), class: "btn flex-item-justify-start" do %>
-      <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
-      <span class="for-screen-reader">Cancel</span>
+      <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Cancel and go back</span>
     <% end %>
 
     <div class="breadcrumbs">
@@ -18,7 +18,7 @@
       <% end %>
     </div>
 
-    <button type="submit" form="page-editor" class="btn flex-item-justify-end">
+    <button type="submit" form="page-editor" class="btn btn--positive flex-item-justify-end">
       <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Save</span>
     </button>
@@ -31,7 +31,10 @@
 
 <% content_for :footer do %>
   <%= house_toolbar id: "house_toolbar", class: "flex align-center" do %>
-    <%= house_button "bold", class: "flex-item-justify-end" do %>
+    <span class="flex-item-justify-start">
+      <%= render "leaves/delete", leaf: @leaf %>
+    </span>
+    <%= house_button "bold" do %>
       <%= image_tag "text-bold.svg", aria: { hidden: "true" }, size: "16" %>
       <span class="for-screen-reader">Text style: bold</span>
     <% end %>
@@ -39,12 +42,9 @@
       <%= image_tag "text-italic.svg", aria: { hidden: "true" }, size: "16" %>
       <span class="for-screen-reader">Text style: italic</span>
     <% end %>
-    <%= house_button "strikethrough" do %>
+    <%= house_button "strikethrough", class: "flex-item-justify-start" do %>
       <%= image_tag "text-strike.svg", aria: { hidden: "true" }, size: "16" %>
       <span class="for-screen-reader">Text style: strikethrough</span>
     <% end %>
-    <span class="flex-item-justify-end">
-      <%= render "leaves/delete", leaf: @leaf %>
-    </span>
   <% end %>
 <% end %>

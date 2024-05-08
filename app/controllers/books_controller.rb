@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[ show edit update ]
+  before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_accesses, only: %i[ new edit ]
 
   def index
     @books = Book.ordered
@@ -26,6 +27,12 @@ class BooksController < ApplicationController
     redirect_to @book
   end
 
+  def destroy
+    @book.destroy
+
+    redirect_to root_url
+  end
+
   private
     def set_book
       @book = Book.find(params[:id])
@@ -33,5 +40,9 @@ class BooksController < ApplicationController
 
     def book_params
       params.require(:book).permit(:title, :subtitle, :author, :cover)
+    end
+
+    def set_accesses
+      @accesses = User.active
     end
 end

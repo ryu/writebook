@@ -19,7 +19,6 @@ Rails.application.routes.draw do
     end
 
     scope module: "books" do
-      resources :accesses
       namespace :leaves do
         resources :moves, only: :create
       end

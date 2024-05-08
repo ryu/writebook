@@ -6,7 +6,7 @@ module InvitationsHelper
     }, &
   end
 
-  def button_to_share_session(url, title, text, &)
+  def web_share_button(url, title, text, &)
     tag.button class: "btn", hidden: true, data: {
       controller: "web-share", action: "web-share#share",
       web_share_url_value: url,

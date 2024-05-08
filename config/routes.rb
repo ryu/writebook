@@ -33,10 +33,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/a/:id(.:ext)", to: "attachments#show", as: :attachment
-
   resources :qr_code, only: :show
   resources :users
+
+  get "/u/:id(.:ext)", to: "action_text/markdown/uploads#show", as: :action_text_markdown_upload
+  resources :action_text_markdown_uploads, only: [ :create ], controller: "action_text/markdown/uploads"
 
   direct :leafable do |leaf, options|
     route_for "book_#{leaf.leafable_name}", leaf.book, leaf.leafable, options

@@ -39,5 +39,4 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert book.editable?(user: users(:jz))
     assert book.readonly?(user: users(:jason))
   end
-
 end

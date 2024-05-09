@@ -16,7 +16,6 @@
   }
 
   .toc__leaf {
-
     cursor: move;
 
      * {
@@ -25,7 +24,7 @@
     }
   }
 
-  .page__picker {
+  .hide-when-arranging {
     display: none;
   }
 }

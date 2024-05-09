@@ -114,7 +114,7 @@
   }
 
   .switch__input:checked + & {
-    background-color: var(--color-ink);
+    background-color: var(--color-positive);
 
     &::before {
       transform: translateX(1.2em);

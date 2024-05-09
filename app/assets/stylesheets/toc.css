@@ -7,7 +7,12 @@
   grid-template-columns: repeat(auto-fit, minmax(max(130px, 12cqi), 1fr));
   letter-spacing: -0.01ch;
   list-style: none;
+  outline-offset: var(--inline-space-half);
   padding: 0;
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
 
   .toc__container:where(:has(#toc-list:checked)) & {
     display: flex;
@@ -131,11 +136,4 @@
   .toc__container:where(:has(#toc-list:checked)) & {
     font-size: 0.8em;
   }
-}
-
-.toc__handle {
-  aspect-ratio: 1;
-  block-size: 0.8em;
-  cursor: grab;
-  margin: auto;
 }

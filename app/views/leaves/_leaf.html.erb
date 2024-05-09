@@ -1,5 +1,5 @@
-<li class="toc__leaf toc__leaf--<%= leaf.leafable_name %> <%= local_assigns[:css_class] %>" id="<%= dom_id(leaf) %>" data-arrangement-target="item" data-id="<%= leaf.id %>">
-  <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "toc__handle translucent colorize--black" %>
+<li class="arrangement__item toc__leaf toc__leaf--<%= leaf.leafable_name %> <%= local_assigns[:css_class] %>" id="<%= dom_id(leaf) %>" data-arrangement-target="item" data-id="<%= leaf.id %>">
+  <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "arrangement__handle translucent colorize--black" %>
 
   <div class="toc__thumbnail">
     <%= link_to "Open #{ leaf.title }", leafable_path(leaf), class: "toc__link", target: "_top" %>

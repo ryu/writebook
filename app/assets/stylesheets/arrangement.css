@@ -1,58 +1,33 @@
-.toc:focus:not(:focus-visible) {
-  outline: none;
-}
-
-.toc__handle {
-  display: none;
-
-  .toc__container:where(:has(#toc-list:checked) :has(#arrange-mode:checked)) & {
-    display: block;
-  }
-}
-
-.toc__container:where(:has(#arrange-mode:checked)) {
-  &:not(:has(#toc-list:checked)) .toc__leaf {
-    animation: fidget 500ms infinite;
-  }
-
-  .toc__leaf {
-    cursor: move;
-
-     * {
-      pointer-events: none !important;
-      text-decoration: none !important;
+.arrangement__container {
+  &:where(:has(#arrange-mode:checked)) {
+    .hide-when-arranging {
+      display: none;
     }
-  }
 
-  .hide-when-arranging {
-    display: none;
-  }
-}
+    .arrangement__item {
+      cursor: move;
 
-.toc__leaf {
-  &.arrangement-cursor {
-    border-style: dashed;
-  }
+      * {
+        pointer-events: none;
+      }
+    }
 
-  &.arrangement-selected {
-    background-color: var(--color-selected);
-    border-radius: 0.2em;
-  }
-}
+    &:where(:has(#toc-list:checked)) {
+      .arrangement__handle {
+        display: block;
+      }
+    }
 
-.arrangement-move-mode {
-  .toc__leaf {
-    &.arrangement-selected {
-      animation: pulse 1000ms infinite;
+    &:not(:has(#toc-list:checked)) {
+      .arrangement__item {
+        animation: fidget 500ms infinite;
+      }
     }
   }
 }
 
-.arrangement-placeholder {
-  background-color: oklch(var(--lch-gray) / 0.5);
-  border-color: var(--color-border);
-  border-style: solid;
-  border-radius: 0.2em;
+.arrangement-cursor {
+  border-style: dashed;
 }
 
 .arrangement-drag-image {
@@ -65,4 +40,28 @@
   color: white;
   border-radius: 1rem;
   text-wrap: nowrap;
+}
+
+.arrangement__handle {
+  aspect-ratio: 1;
+  block-size: 0.8em;
+  cursor: grab;
+  display: none;
+  margin: auto;
+}
+
+.arrangement-selected {
+  background-color: var(--color-selected);
+  border-radius: 0.2em;
+
+  .arrangement-move-mode & {
+    animation: pulse 1000ms infinite;
+  }
+}
+
+.arrangement-placeholder {
+  background-color: oklch(var(--lch-gray) / 0.5);
+  border-color: var(--color-border);
+  border-style: solid;
+  border-radius: 0.2em;
 }

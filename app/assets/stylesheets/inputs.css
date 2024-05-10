@@ -73,12 +73,14 @@
     }
   }
 
-  &:focus-within .switch__btn {
-    --shadow-size: min(0.2em, 2px);
+  &:has(:focus-visible) {
+    .switch__btn {
+      --shadow-size: max(2px, 0.08em);
 
-    box-shadow:
-      0 0 0 var(--shadow-size) var(--color-bg),
-      0 0 0 calc(var(--shadow-size) * 2) var(--color-link);
+      box-shadow:
+        0 0 0 var(--shadow-size) var(--color-bg),
+        0 0 0 calc(var(--shadow-size) * 2) var(--color-ink);
+    }
   }
 }
 

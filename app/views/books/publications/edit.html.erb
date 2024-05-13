@@ -1,5 +1,5 @@
 <%= turbo_frame_tag @book, :publication do %>
-  <div class="flex flex-column gap margin-block-start pad fill-shade border-radius">
+  <div class="flex flex-column gap margin-block-start pad fill-shade border-radius <%= "shake" if @book.errors[:slug].any? %>">
     <div class="flex flex-column align-center gap txt-medium">
       <% public_url = public_book_url(slug: @book.slug) %>
 
@@ -12,7 +12,7 @@
             <%= request.host %>/
             <%= form.text_field :slug,
                   autofocus: true,
-                  class: class_names("input fill-white", "shake" => @book.errors[:slug].any?),
+                  class: class_names("input fill-white"),
                   required: true,
                   pattern: "^[\\-A-Za-z0-9]+$",
                   title: "Enter letters, numbers, or hyphens only" %>

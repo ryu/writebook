@@ -27,7 +27,7 @@
 <aside class="txt-align-center">
   <%= image_tag @book.cover.attached? ? @book.cover : "default-cover.webp", alt: "Book cover", class: "book__cover margin-none" %>
 
-  <% if @book.editable? %>
+  <% if @book.editable? || book.published? %>
     <%= turbo_frame_tag @book, :publication do %>
       <%= render "books/publications/publication", book: @book %>
     <% end %>

@@ -1,15 +1,17 @@
 <div class="flex flex-column gap margin-block-start pad fill-shade border-radius">
-  <div class="flex align-center justify-center gap-half center">
-    <%= image_tag "lock.svg", aria: { hidden: true }, size: 36, class: "colorize--black" %>
-      <%= form_with model: book, url: book_publication_path(book), data: { controller: "form", action: "change->form#submit" }, html: { contents: true } do |form| %>
-        <label class="switch txt-medium">
-          <%= form.check_box :published, checked: book.published?, class: "switch__input" %>
-          <span class="switch__btn round"></span>
-          <span class="for-screen-reader">Publish this book</span>
-        </label>
-      <% end %>
-    <%= image_tag "world.svg", aria: { hidden: true }, size: 36, class: "colorize--black" %>
-  </div>
+  <% if book.editable? %>
+    <div class="flex align-center justify-center gap-half center">
+      <%= image_tag "lock.svg", aria: { hidden: true }, size: 36, class: "colorize--black" %>
+        <%= form_with model: book, url: book_publication_path(book), data: { controller: "form", action: "change->form#submit" }, html: { contents: true } do |form| %>
+          <label class="switch txt-medium">
+            <%= form.check_box :published, checked: book.published?, class: "switch__input" %>
+            <span class="switch__btn round"></span>
+            <span class="for-screen-reader">Publish this book</span>
+          </label>
+        <% end %>
+      <%= image_tag "world.svg", aria: { hidden: true }, size: 36, class: "colorize--black" %>
+    </div>
+  <% end %>
 
   <% if book.published? %>
     <div class="flex flex-column align-center gap txt-medium">
@@ -51,7 +53,7 @@
           <span class="for-screen-reader">Share public link</span>
         <% end %>
 
-        <% if Current.user.can_administer? %>
+        <% if book.editable? %>
           <%= link_to edit_book_publication_path(book), class: "btn" do %>
             <%= image_tag "pencil.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
             <span class="for-screen-reader">Edit link URL</span>

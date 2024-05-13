@@ -1,6 +1,8 @@
 class Books::PublicationsController < ApplicationController
   include BookScoped
 
+  before_action :ensure_editable, only: %i[ edit update ]
+
   def show
   end
 
@@ -13,6 +15,10 @@ class Books::PublicationsController < ApplicationController
   end
 
   private
+    def ensure_editable
+      head :forbidden unless @book.editable?
+    end
+
     def book_params
       params.require(:book).permit(:published, :slug)
     end

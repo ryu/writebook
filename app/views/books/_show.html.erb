@@ -26,7 +26,7 @@
   </nav>
 <% end %>
 
-<aside class="txt-align-center">
+<aside class="txt-align-center margin-block">
   <%= image_tag book.cover.attached? ? book.cover : "default-cover.webp", alt: "Book cover", class: "book__cover margin-block-none center" %>
 
   <% if book.editable? %>
@@ -37,13 +37,13 @@
 </aside>
 
 <%= arrangement_tag book, class: "arrangement__container toc__container full-width txt-align-center" do %>
-  <h1 class="txt-align-start margin-block-none flex flex-column gap txt-tight-lines" style="row-gap: 0.1lh;">
+  <h1 class="txt-align-start flex flex-column gap txt-tight-lines margin-block-end" style="row-gap: 0.1lh;">
     <strong class="book__title"><%= book.title %></strong>
     <small class="txt-medium-container txt-normal"><%= book.subtitle %></small>
     <small class="txt-medium-container txt-normal translucent"><%= book.author %></small>
   </h1>
 
-  <div class="book__toolbar flex gap-half pad-block" data-controller="toc-view" data-toc-view-id-value="<%= dom_id(book) %>">
+  <div class="book__toolbar fill-white flex gap-half pad-block" data-controller="toc-view" data-toc-view-id-value="<%= dom_id(book) %>">
     <% if book.editable? %>
       <%= button_to [ book, Page.new ], params: { page: { title: "Untitled"} }, class: "btn btn--plain txt-medium hide-when-arranging" do %>
         <svg viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg" fill="var(--color-ink)" height="60vmin" width="60vmin">
@@ -67,7 +67,7 @@
         <span class="for-screen-reader">Add a new picture page</span>
       <% end %>
 
-      <%= button_to [ book, Section.new ], params: { section: { title: "Section"} }, class: "btn btn--plain txt-medium hide-when-arranging flex-item-justify-start" do %>
+      <%= button_to [ book, Section.new ], params: { section: { title: "Section"} }, class: "btn btn--plain txt-medium hide-when-arranging", form_class: "flex-item-justify-start" do %>
         <svg viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg" fill="var(--color-ink)" height="60vmin" width="60vmin">
           <path d="m15 11.5c-3.6 0-6.5-2.9-6.5-6.5s0-.2 0-.2h-6.3c-.3 0-.4.2-.4.4v16.9s0 .2.2 0h13.4c.3 0 .4-.2.4-.4v-10.3c-.2 0-.5 0-.8 0z" opacity=".3"/>
           <path d="m15.8 21.7c0 .3-.2.4-.4.4h-13.5-.2v-16.9c0-.3.2-.4.4-.4h6.3c0-.6.1-1.2.3-1.8h-6.9c-1 0-1.8.8-1.8 1.8v17.5c0 1 .8 1.8 1.8 1.8h14c.9 0 1.6-.6 1.8-1.4v-11.6c-.5.2-1.1.4-1.8.5v10.3z"/>
@@ -78,13 +78,13 @@
       <% end %>
     <% end %>
 
-    <label class="btn txt-medium flex-item-justify-end">
+    <label class="btn txt-medium">
       <input type="radio" name="view" id="toc-list" value="list" checked="checked" data-toc-view-target="switch" data-toc-view-type-value="list" data-action="toc-view#saveViewPref">
       <%= image_tag "view-list.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">List view</span>
     </label>
 
-    <label class="btn txt-medium">
+    <label class="btn txt-medium flex-item-justify-start">
       <input type="radio" name="view" id="toc-grid" value="grid" data-toc-view-target="switch" data-toc-view-type-value="grid" data-action="toc-view#saveViewPref">
       <%= image_tag "view-grid.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Page view</span>
@@ -99,7 +99,7 @@
     <% end %>
   </div>
 
-  <div class="position-relative margin-block-start">
+  <div class="position-relative">
     <div class="toc" tabindex="0" data-arrangement-target="container" data-action="<%= arrangement_actions %>">
       <%= turbo_frame_tag :leaves do %>
         <%= render partial: "leaves/leaf", collection: @leaves, as: :leaf %>

@@ -37,8 +37,6 @@
 }
 
 .book__toolbar {
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
   inset-block-start: 0;
   position: sticky;
   z-index: 1;

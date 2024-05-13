@@ -25,7 +25,7 @@
 
   <small class="toc__wordcount translucent">
     <% if leaf.leafable.is_a?(Page) %>
-      <%= word_count(leaf.leafable.body) %>
+      <%= word_count(leaf.leafable.body.content) %>
     <% end %>
   </small>
 

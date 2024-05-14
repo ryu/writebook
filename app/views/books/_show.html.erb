@@ -104,11 +104,11 @@
   </div>
 
   <div class="position-relative">
-    <div class="toc" tabindex="0" data-arrangement-target="container" data-action="<%= arrangement_actions %>">
+    <menu class="toc margin-none" tabindex="0" data-arrangement-target="container" data-action="<%= arrangement_actions %>">
       <%= turbo_frame_tag :leaves do %>
         <%= render partial: "leaves/leaf", collection: @leaves, as: :leaf %>
       <% end %>
-    </div>
+    </menu>
 
     <div data-arrangement-target="layer" class="toc"></div>
     <div data-arrangement-target="dragImage" class="arrangement-drag-image"></div>

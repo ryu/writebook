@@ -27,7 +27,7 @@
   --color-subtle-dark: oklch(var(--lch-gray-dark));
   --color-selected: oklch(var(--lch-blue-light));
   --color-selected-dark: oklch(var(--lch-blue-dark));
-  --color-alert: oklch(var(--lch-orange));
+  --color-marker: oklch(var(--lch-orange));
   --color-always-black: oklch(var(--lch-always-black));
 
   /* Redefine named color values for dark mode */

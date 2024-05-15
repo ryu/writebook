@@ -4,6 +4,11 @@
     {
       "src": "/icon.png",
       "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon.png",
+      "type": "image/png",
       "sizes": "512x512"
     },
     {
@@ -16,7 +21,22 @@
   "start_url": "/",
   "display": "standalone",
   "scope": "/",
-  "description": "Workbook.",
-  "theme_color": "red",
-  "background_color": "red"
+  "description": "A book publishing tool from the makers of Basecamp and HEY.",
+  "categories": ["books", "business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Create a new book",
+      "description": "Open Workbook and start writing",
+      "url": "/books/new",
+      "icons": [{ "src": "<%= image_url("add.svg") %>", "sizes": "any" }]
+    },
+    {
+      "name": "Open library",
+      "description": "Open Workbook and see all your books",
+      "url": "/books",
+      "icons": [{ "src": "<%= image_url("books.svg") %>", "sizes": "any" }]
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
 }

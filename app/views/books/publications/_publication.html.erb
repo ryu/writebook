@@ -23,13 +23,13 @@
       </label>
 
       <div class="flex align-center gap">
-        <div data-controller="popup" class="flex-inline">
-          <%= tag.button class: "btn", data: { action: "popup#toggle" } do %>
+        <div data-controller="dialog" class="flex-inline">
+          <%= tag.button class: "btn", data: { action: "dialog#open" } do %>
             <%= image_tag "qr-code.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
             <span class="for-screen-reader">Show public link QR code</span>
           <% end %>
 
-          <dialog class="dialog panel" data-popup-target="menu" data-action="click->popup#close" style="--panel-size: max-content">
+          <dialog class="dialog panel shadow" data-dialog-target="menu">
             <%= qr_code_image(public_url) %>
 
             <form method="dialog" class="margin-block-start flex justify-center">

@@ -15,12 +15,12 @@ module TranslationsHelper
   end
 
   def translation_button(translation_key)
-    tag.div(class: "position-relative", data: { controller: "popup", action: "keydown.esc->popup#close click@document->popup#closeOnClickOutside", popup_orientation_top_class: "popup-orientation-top" }) do
-      tag.button(type: "button", class: "btn", tabindex: -1, data: { action: "popup#toggle" }) do
+    tag.div(class: "position-relative", data: { controller: "popover", action: "keydown.esc->popover#close click@document->popover#closeOnClickOutside", popover_orientation_top_class: "popover-orientation-top" }) do
+      tag.button(type: "button", class: "btn", tabindex: -1, data: { action: "popover#toggle" }) do
         concat image_tag("globe.svg", size: 20, role: "presentation", class: "color-icon")
         concat tag.span("Translate", class: "for-screen-reader")
       end +
-      tag.dialog(class: "lanuage-list-menu shadow", data: { popup_target: "menu" }) do
+      tag.dialog(class: "lanuage-list-menu popover shadow", data: { popover_target: "menu" }) do
         translations_for(translation_key)
       end
     end

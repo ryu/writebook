@@ -28,7 +28,7 @@ export default class extends Controller {
 
     if (leafId === this.leafIdValue && lastReadParagraphIndex > 0) {
       const lastReadParagraph = this.paragraphs[lastReadParagraphIndex]
-      lastReadParagraph.scrollIntoView({ behavior: "smooth", block: "end" })
+      lastReadParagraph?.scrollIntoView({ behavior: "smooth", block: "end" })
     }
   }
 

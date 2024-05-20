@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   include SetBookLeaf
 
+  before_action :forget_reading_progress, except: :show
+
   def new
     @page = Page.new
   end
@@ -36,6 +38,10 @@ class PagesController < ApplicationController
   end
 
   private
+    def forget_reading_progress
+      cookies.delete "reading_progress_#{@book.id}"
+    end
+
     def new_page
       Page.new page_params
     end

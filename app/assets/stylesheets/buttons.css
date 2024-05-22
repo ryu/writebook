@@ -115,16 +115,19 @@
 .btn--negative {
   --btn-background: var(--color-negative);
   --btn-color: var(--color-ink-reversed);
+  --outline-color: var(--color-negative);
 }
 
 .btn--positive {
   --btn-background: var(--color-positive);
   --btn-color: var(--color-ink-reversed);
+  --outline-color: var(--color-positive);
 }
 
 .btn--reversed {
   --btn-background: var(--color-ink);
   --btn-color: var(--color-bg);
+  --outline-color: var(--color-ink);
 }
 
 :is(.btn--negative, .btn--positive, .btn--reversed) {

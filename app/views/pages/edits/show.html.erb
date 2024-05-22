@@ -21,23 +21,33 @@
 <div class="library">
   <section>
     <%= turbo_frame_tag :previous_version do %>
-      <header class="flex align-center gap">
+      <header class="flex align-center justify-center gap">
         <% if @edit.previous %>
-          <%= link_to page_edit_path(@page, @edit.previous), class: "btn btn--plain txt-small flex-item-justify-start" do %>
+          <%= link_to page_edit_path(@page, @edit.previous), class: "btn btn--reversed txt-small" do %>
             <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
             <span class="for-screen-reader">Previous version</span>
           <% end %>
+        <% else %>
+          <span class="btn btn-reversed txt-small" disabled>
+            <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Previous version</span>
+          </span>
         <% end %>
 
-        <h2 class="btn btn--reversed txt-medium center margin-none overflow-ellipsis">
+        <h2 class="btn btn--reversed txt-medium margin-none overflow-ellipsis">
           <%= "#{ time_ago_in_words(@edit.created_at) } ago" %>
         </h2>
 
         <% if @edit.next %>
-          <%= link_to page_edit_path(@page, @edit.next), class: "btn btn--plain txt-small flex-item-justify-end" do %>
+          <%= link_to page_edit_path(@page, @edit.next), class: "btn btn--reversed txt-small" do %>
             <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
             <span class="for-screen-reader">Next version</span>
           <% end %>
+        <% else %>
+          <span class="btn btn-reversed txt-small" disabled>
+            <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Next version</span>
+          </span>
         <% end %>
       </header>
 

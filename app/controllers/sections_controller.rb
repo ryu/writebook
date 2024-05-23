@@ -9,6 +9,8 @@ class SectionsController < ApplicationController
     @leafable = new_section
     @book.press @leafable
 
+    position_new_leaf(@leafable.leaf)
+
     respond_to do |format|
       format.turbo_stream { render }
       format.html { redirect_to @book }
@@ -36,11 +38,17 @@ class SectionsController < ApplicationController
   end
 
   private
+    def position_new_leaf(leaf)
+      if position = params[:position]&.to_i
+        leaf.move_to_position position
+      end
+    end
+
     def new_section
       Section.new section_params
     end
 
     def section_params
-      params.require(:section).permit(:title)
+      params.fetch(:section, {}).permit(:title)
     end
 end

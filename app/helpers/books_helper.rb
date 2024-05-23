@@ -12,6 +12,16 @@ module BooksHelper
       }, &
   end
 
+  def book_part_create_button(book, kind, &)
+    url = url_for [ book, kind.new ]
+
+    button_to url, class: "btn btn--plain txt-medium fill-transparent disable-when-arranging", draggable: true,
+      data: {
+        action: "dragstart->arrangement#dragStartCreate dragend->arrangement#dragEndCreate",
+        arrangement_url_param: url
+      }, &
+  end
+
   def link_to_first_leafable(leaves)
     if first_leaf = leaves.first
       link_to leafable_path(first_leaf), data: { **hotkey_data_attributes("right") }, class: "txt-ink txt-undecorated flex align-center gap full-width flex-item-grow min-width justify-start flex-item-justify-start", hidden: true do

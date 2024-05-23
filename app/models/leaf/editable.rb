@@ -9,10 +9,9 @@ module Leaf::Editable
 
   def edit(leafable_params)
     transaction do
-      edits.revision.create!(leafable: leafable)
+      new_leafable = leafable.dup_with_attachments.tap { |l| l.update!(leafable_params) }
 
-      new_leafable = leafable.dup.tap { |l| l.update!(leafable_params) }
-      # TODO: can we see if the update actually changed something, and skip creating the edit if not?
+      edits.revision.create!(leafable: leafable)
       update!(leafable: new_leafable)
     end
   end

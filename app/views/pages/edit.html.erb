@@ -13,7 +13,7 @@
       <% end %> ▸
       <%= link_to @book.title, @book %> ▸
       <%= form_with model: [ @book, @page ], class: "flex align-center gap-half", format: :html do |form| %>
-        <strong><%= form.text_field :title, class: "input full-width", autocomplete: "off" %></strong>
+        <strong><%= form.text_field :title, form: "page-editor", class: "input full-width", autocomplete: "off" %></strong>
       <% end %>
     </div>
 

@@ -10,6 +10,15 @@ class Leaf::EditableTest < ActiveSupport::TestCase
     assert_equal "Welcome to The Handbook!", leaves(:welcome_page).edits.last.page.title
   end
 
+  test "editing a leafable with an attachment includes the attachments in the new version" do
+    assert leaves(:reading_picture).picture.image.attached?
+
+    leaves(:reading_picture).edit(title: "New title")
+
+    assert_equal "New title", leaves(:reading_picture).title
+    assert leaves(:reading_picture).picture.image.attached?
+  end
+
   test "trashing a leaf records the edit" do
     leaves(:welcome_page).trashed!
 

@@ -60,13 +60,13 @@ module BooksHelper
   def disable_access_edit?(book, user)
     case
     when user.current?
-      return true
+      true
     when book.new_record?
-      return false
+      false
     when Current.user.can_administer?
-      return false
+      false
     else
-      return true
+      true
     end
   end
 

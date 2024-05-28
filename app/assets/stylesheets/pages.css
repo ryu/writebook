@@ -1,11 +1,4 @@
-.page--picture {
-  img {
-    max-block-size: 100%;
-    max-inline-size: 100%;
-  }
-}
-
-body:has(.page--section) {
+  body:has(.page--section) {
   --btn-background: var(--color-subtle);
 
   background-color: var(--color-subtle);
@@ -16,7 +9,7 @@ body:has(.page--section) {
   }
 }
 
-:is(.page--picture, .page--section) {
+:is(.page--section) {
   block-size: calc(100dvh - (var(--footer-height) * 2) - var(--block-space));
   display: grid;
   place-items: center;

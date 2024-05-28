@@ -4,7 +4,7 @@
   <%= render "leaves/header", book: @book, leaf: @leaf %>
 <% end %>
 
-<div class="page--picture">
+<figure class="page--picture flex flex-column align-center gap">
   <% if @picture.image.attached? %>
     <%= link_to rails_blob_path(@picture.image), data: {
           action: "lightbox#open:prevent",
@@ -15,7 +15,11 @@
   <% else %>
     <%= image_tag "default-picture.webp", alt: "No image uploaded", loading: "lazy" %>
   <% end %>
-</div>
+
+  <figcaption class="txt-small--responsive">
+    <%= @picture.caption %>
+  </figcaption>
+</figure>
 
 <% content_for :footer do %>
   <%= render "leaves/navigation", leaf: @leaf %>

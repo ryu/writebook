@@ -47,7 +47,7 @@
   input[type="file"] {
     --input-border-color: var(--color-selected-dark);
     --input-border-radius: 8px;
-    --input-border-size: 2px;
+    --input-border-size: 4px;
 
     block-size: 100%;
     font-size: 0;

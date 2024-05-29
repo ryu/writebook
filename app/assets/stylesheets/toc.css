@@ -82,11 +82,10 @@
   text-align: start;
   text-decoration: none;
 
-  .toc__link::after {
+  .toc__link {
     background-color: transparent;
     content: "";
     inset: 0;
-    pointer-events: auto;
     position: absolute;
     z-index: 1;
   }

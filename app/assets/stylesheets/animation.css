@@ -31,6 +31,11 @@
   100% { opacity: 1; }
 }
 
+@keyframes pulsing-outline {
+  0%  { outline-width: 0; }
+  33% { outline-width: 4px; }
+}
+
 @keyframes shake {
   0%  { transform: translateX(-2rem); }
   25% { transform: translateX(2rem); }

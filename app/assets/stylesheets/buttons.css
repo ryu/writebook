@@ -93,6 +93,13 @@
     }
   }
 
+  &:is(.btn--pulse-when-checked) {
+    &:has(input:checked) {
+      animation: pulsing-outline 2s infinite both;
+      outline: 0 solid var(--color-selected-dark);
+    }
+  }
+
   &[disabled],
   &:has([disabled]),
   [disabled] &[type=submit],

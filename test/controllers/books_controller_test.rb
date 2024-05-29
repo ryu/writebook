@@ -37,6 +37,8 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_equal 3, Book.last.accesses.count
 
     assert book.editable?(user: users(:jz))
-    assert book.readonly?(user: users(:jason))
+
+    assert book.accessable?(user: users(:jason))
+    assert_not book.editable?(user: users(:jason))
   end
 end

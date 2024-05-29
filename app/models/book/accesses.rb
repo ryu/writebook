@@ -13,10 +13,6 @@ module Book::Accesses
     access_for(user: user)&.editor?
   end
 
-  def readonly?(user: Current.user)
-    access_for(user: user)&.reader?
-  end
-
   def access_for(user: Current.user)
     accesses.find_by(user: user)
   end

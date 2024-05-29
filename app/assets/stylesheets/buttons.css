@@ -81,6 +81,7 @@
   &:has(input:checked)  {
     --btn-background: var(--color-ink);
     --btn-color: var(--color-ink-reversed);
+    --outline-color: var(--color-ink);
 
     img {
       filter: invert(1);

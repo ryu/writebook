@@ -38,7 +38,7 @@ module BooksHelper
         image_tag("arrow-left.svg", aria: { hidden: true }, size: 24) + tag.span(previous_leaf.title, class: "for-screen-reader")
       end
     else
-      link_to book_path(leaf.book), data: { **hotkey_data_attributes("left") }, class: "btn flex-item-justify-start" do
+      link_to Current.user ? book_path(leaf.book) : public_book_path(leaf.book.slug), data: { **hotkey_data_attributes("left") }, class: "btn flex-item-justify-start" do
         image_tag("arrow-left.svg", aria: { hidden: true }, size: 24) + tag.span("Table of contents", class: "for-screen-reader")
       end
     end
@@ -53,7 +53,7 @@ module BooksHelper
         end
       end
     else
-      link_to book_path(leaf.book), data: { **hotkey_data_attributes("right") }, class: "txt-ink txt-medium txt-undecorated flex align-center gap full-width flex-item-grow min-width justify-end flex-item-justify-end" do
+      link_to Current.user ? book_path(leaf.book) : public_book_path(leaf.book.slug), data: { **hotkey_data_attributes("right") }, class: "txt-ink txt-medium txt-undecorated flex align-center gap full-width flex-item-grow min-width justify-end flex-item-justify-end" do
         tag.span("End", class: "overflow-ellipsis") +
         tag.span(class: "btn txt-medium") do
           image_tag("arrow-right.svg", aria: { hidden: true }, size: 24) + tag.span("End", class: "for-screen-reader")

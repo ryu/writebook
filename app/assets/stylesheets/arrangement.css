@@ -33,6 +33,14 @@
   }
 }
 
+.arrangement-adding-mode
+  .arrangement__item {
+    * {
+      pointer-events: none;
+    }
+  }
+}
+
 .arrangement-cursor {
   border-style: dashed;
 }

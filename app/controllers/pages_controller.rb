@@ -11,6 +11,8 @@ class PagesController < ApplicationController
     @leafable = new_page
     @book.press @leafable
 
+    position_new_leaf(@leafable.leaf)
+
     respond_to do |format|
       format.turbo_stream { render }
       format.html { redirect_to @book }
@@ -42,11 +44,17 @@ class PagesController < ApplicationController
       cookies.delete "reading_progress_#{@book.id}"
     end
 
+    def position_new_leaf(leaf)
+      if position = params[:position]&.to_i
+        leaf.move_to_position position
+      end
+    end
+
     def new_page
       Page.new page_params
     end
 
     def page_params
-      params.require(:page).permit(:title, :body)
+      params.fetch(:page, {}).permit(:title, :body)
     end
 end

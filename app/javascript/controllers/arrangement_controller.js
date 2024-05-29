@@ -11,7 +11,7 @@ const NEW_ITEM_DATA_TYPE = "x-workbook/create"
 const ITEM_SELECTOR = "[data-arrangement-target=item]"
 
 export default class extends Controller {
-  static targets = [ "container", "item", "layer", "dragImage" ]
+  static targets = [ "container", "list", "item", "layer", "dragImage" ]
   static classes = [ "cursor", "selected", "placeholder", "addingMode", "moveMode" ]
   static values = { url: String }
 
@@ -103,7 +103,7 @@ export default class extends Controller {
     event.preventDefault()
 
     if (this.#moveMode) {
-      this.containerTarget.append(...this.#originalOrder)
+      this.listTarget.append(...this.#originalOrder)
       this.#moveMode = false
       this.#originalOrder = undefined
     }
@@ -119,7 +119,7 @@ export default class extends Controller {
     entry.id = NEW_ITEM_ID
     entry.innerHTML = "&nbsp;"
     entry.dataset.arrangementTarget = "item"
-    this.containerTarget.prepend(entry)
+    this.listTarget.prepend(entry)
 
     event.dataTransfer.effectAllowed = "move"
     event.dataTransfer.setData(NEW_ITEM_DATA_TYPE, event.params.url)
@@ -170,7 +170,7 @@ export default class extends Controller {
 
   dragEnd() {
     if (!this.#wasDropped) {
-      this.containerTarget.append(...this.#originalOrder)
+      this.listTarget.append(...this.#originalOrder)
       this.#selection = undefined
       this.#renderSelection()
       this.#originalOrder = undefined

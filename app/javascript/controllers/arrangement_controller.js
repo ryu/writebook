@@ -147,7 +147,7 @@ export default class extends Controller {
   dragStart(event) {
     this.#wasDropped = false
     this.#dragItem = event.target
-    this.#restoreOriginalOrder()
+    this.#saveOriginalOrder()
 
     if (!this.#targetIsSelected(event.target)) {
       this.#setSelection(event.target, false)

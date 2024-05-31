@@ -12,9 +12,9 @@ end
 
 include SSHKit::DSL
 
-IMAGE_NAME = "workbook-export"
+IMAGE_NAME = "writebook-export"
 DOCKERFILE = "Dockerfile-export"
-TARGET_NAME = "workbook.zip"
+TARGET_NAME = "writebook.zip"
 REMOTE_USER = "app"
 DEPLOY_HOSTS = %w[ once-store-app-101 once-store-app-102 ]
 DEPLOY_LOCATION = "/local/app/product_releases/"

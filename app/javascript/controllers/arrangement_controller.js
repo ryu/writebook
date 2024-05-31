@@ -186,28 +186,16 @@ export default class extends Controller {
     if (this.itemTargets.includes(event.target) && !this.#targetIsSelected(event.target)) {
       const offset = this.itemTargets.indexOf(this.#dragItem) - this.itemTargets.indexOf(event.target)
       const isBefore = offset < 0
-      const rect = event.target.getBoundingClientRect()
-      const selectionRect = this.#selectedItems[isBefore ? 0 : this.#selectionSize - 1].getBoundingClientRect()
-      const sameRow = rect.top === selectionRect.top
 
-      const mid = sameRow ? rect.left + rect.width / 2.0 : rect.top + rect.height / 2.0
-      const ref = sameRow ? event.clientX : event.clientY
-
-      if (ref < mid && !isBefore) {
-        this.#keepingSelection(() => {
-          event.target.before(...this.#selectedItems)
-        })
-        this.#updateLayer()
-        this.#renderSelection()
-      }
-
-      if (ref > mid && isBefore) {
-        this.#keepingSelection(() => {
+      this.#keepingSelection(() => {
+        if (isBefore) {
           event.target.after(...this.#selectedItems)
-        })
-        this.#updateLayer()
-        this.#renderSelection()
-      }
+        } else {
+          event.target.before(...this.#selectedItems)
+        }
+      })
+      this.#updateLayer()
+      this.#renderSelection()
     }
   }
 

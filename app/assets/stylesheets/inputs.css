@@ -154,3 +154,19 @@
       -webkit-box-shadow: 0 0 0px 1000px var(--color-selected) inset;
   }
 }
+
+#page-editor.dirty, #picture-editor.dirty, #section-editor.dirty {
+  body:has(&) button[type="submit"] {
+    animation: pulse 1s infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}

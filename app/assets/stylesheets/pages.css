@@ -16,7 +16,11 @@
 }
 
 .page__toolbar {
-  inset: var(--footer-height) auto auto;
-  position: sticky;
+  border-radius: 5em;
+  inset: 0 auto auto;
   z-index: 1;
+}
+
+:is(.page__body, .page--page) {
+  text-align: start;
 }

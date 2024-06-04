@@ -9,14 +9,8 @@
     <strong><%= leaf.leafable.title %></strong>
   </div>
 
-  <button class="btn flex-item-justify-end" data-action="fullscreen#toggle" hidden>
+  <button class="btn flex-item-justify-end" data-action="fullscreen#toggle">
     <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Enter fullscreen</span>
   </button>
-
-  <% if book.editable? %>
-    <span class="flex-item-justify-end">
-      <%= editing_mode_toggle_switch(leaf: leaf) %>
-    <span>
-  <% end %>
 <% end %>

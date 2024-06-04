@@ -9,7 +9,7 @@
   max-inline-size: 100%;
   min-block-size: calc(100vh - (2 * var(--footer-height)));
   padding-inline: clamp(var(--inline-space), 5cqi, calc(var(--inline-space) * 3));
-  text-align: start;
+  text-align: center;
 
   &:where(.book) {
     --cover-height: auto;

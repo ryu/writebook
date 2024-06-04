@@ -4,6 +4,14 @@
   <%= render "leaves/header", book: @book, leaf: @leaf %>
 <% end %>
 
+<% if @book.editable? %>
+  <div class="page__toolbar flex-inline align-center gap center fill-shade">
+    <span class="center pad">
+      <%= editing_mode_toggle_switch(leaf: @leaf) %>
+    <span>
+  </div>
+<% end %>
+
 <figure class="page--picture flex flex-column align-center gap">
   <% if @picture.image.attached? %>
     <%= link_to rails_blob_path(@picture.image), data: {

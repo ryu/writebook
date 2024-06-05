@@ -1,13 +1,3 @@
-<% if position.present? %>
-  <%= turbo_stream.replace :dragged_item do %>
-    <%= render "leaves/edit", leaf: leaf, css_class: "wiggle" do %>
-      <span data-controller="scroll-into-view"></span>
-    <% end %>
-  <% end %>
-<% else %>
-  <%= turbo_stream.append :leaves do %>
-    <%= render "leaves/edit", leaf: leaf, css_class: "wiggle" do %>
-      <span data-controller="scroll-into-view"></span>
-    <% end %>
-  <% end %>
+<%= render "leaves/edit", leaf: leaf, css_class: "wiggle" do %>
+  <span data-controller="scroll-into-view"></span>
 <% end %>

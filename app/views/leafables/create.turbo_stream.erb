@@ -1,1 +1,9 @@
-<%= render "leaves/create", leaf: @leafable.leaf, position: params[:position] %>
+<%= turbo_stream.update :leaves do %>
+  <% @leaves.each do |leaf| %>
+    <% if leaf == @new_leaf %>
+      <%= render "leaves/create", leaf: leaf %>
+    <% else %>
+      <%= render leaf %>
+    <% end %>
+  <% end %>
+<% end %>

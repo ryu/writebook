@@ -1,4 +1,13 @@
 module LeavesHelper
+  def leaf_item_tag(leaf, **, &)
+    tag.li class: "arrangement__item toc__leaf toc__leaf--#{leaf.leafable_name}",
+      id: dom_id(leaf),
+      data: {
+        id: leaf.id,
+        arrangement_target: "item"
+      }, **, &
+  end
+
   def leaf_nav_tag(leaf, **, &)
     tag.nav data: {
       controller: "reading-tracker",

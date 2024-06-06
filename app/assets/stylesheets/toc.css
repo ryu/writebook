@@ -40,7 +40,6 @@
   .toc__container:where(:has(#toc-list:checked)) & {
     align-items: center;
     column-gap: 1ch;
-    display: flex;
     flex-direction: row;
     justify-content: center;
     row-gap: calc(var(--block-space) * 0.3);
@@ -180,6 +179,8 @@
 }
 
 .toc__wordcount {
+  display: flex-inline;
+
   .toc__container:where(:has(#toc-list:checked)) & {
     font-size: 0.8em;
   }

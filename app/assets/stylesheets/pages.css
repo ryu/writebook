@@ -1,5 +1,5 @@
 body:has(.page--section) {
-  --btn-background: var(--color-subtle);
+  --btn-background: transparent;
 
   background-color: var(--color-subtle);
 
@@ -91,5 +91,24 @@ body:has(.page--section) {
       margin-inline: calc((var(--size) / 2) * -1);
       position: absolute;
     }
+  }
+}
+
+.being-edited-by {
+  background-color: #234;
+  color: white;
+  border-radius: 4px;
+  padding: 1rem;
+  animation: pulse 2s 10;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
   }
 }

@@ -154,22 +154,3 @@
       -webkit-box-shadow: 0 0 0px 1000px var(--color-selected) inset;
   }
 }
-
-.being-edited-by {
-  background-color: #234;
-  color: white;
-  border-radius: 4px;
-  padding: 1rem;
-  animation: pulse 2s 10;
-  text-align: center;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
-  }
-}

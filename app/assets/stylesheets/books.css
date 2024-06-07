@@ -44,6 +44,12 @@
   margin-block-start: calc(var(--block-space) * -1);
 }
 
+.book__form {
+  @media (max-width: 100ch) {
+    flex-direction: column;
+  }
+}
+
 .book__nav {
   font-size: var(--font-medium-responsive);
   margin: var(--block-space-double) auto var(--block-space);

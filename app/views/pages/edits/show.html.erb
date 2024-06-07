@@ -19,7 +19,7 @@
 <% end %>
 
 <div class="library">
-  <section>
+  <section class="txt-align-start">
     <%= turbo_frame_tag :previous_version do %>
       <header class="flex align-center justify-center gap">
         <% if @edit.previous %>
@@ -55,8 +55,8 @@
     <% end %>
   </section>
 
-  <section>
-    <header class="flex align-center gap">
+  <section class="txt-align-start">
+    <header class="flex align-center gap justify-center">
       <h2 class="btn btn--positive txt-medium center margin-none">
         Current version
       </h2>

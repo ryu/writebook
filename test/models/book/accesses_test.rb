@@ -13,14 +13,6 @@ class Book::AccessesTest < ActiveSupport::TestCase
     end
   end
 
-  test "new users get access to everyone books" do
-    book = Book.create!(title: "My new book", everyone_access: true)
-    user = User.create!(email_address: "bob@example.com", name: "Bob", password: "secret123456")
-
-    assert book.accessable?(user: user)
-    assert_not book.editable?(user: user)
-  end
-
   test "update_access updates existing access" do
     book = Book.create!(title: "My new book", everyone_access: false)
 

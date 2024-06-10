@@ -13,6 +13,7 @@ html, body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   line-height: 1.4;
+  overflow: unset;
   text-rendering: optimizeLegibility;
   text-size-adjust: none;
 }

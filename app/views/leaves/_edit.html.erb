@@ -28,7 +28,7 @@
     </span>
   </div>
 
-  <small class="toc__wordcount translucent">
+  <small class="toc__wordcount">
     <% if leaf.leafable.is_a?(Page) %>
       <%= word_count(leaf.leafable.body.content) %>
     <% end %>

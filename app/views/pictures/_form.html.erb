@@ -2,7 +2,7 @@
   <label class="input input--file input--picture unpad" data-controller="upload-preview">
     <%= image_tag picture.image.attached? ? picture.image.variant(:large) : "default-picture.webp", alt: "Picture",
         data: { upload_preview_target: "image" } %>
-    <%= form.file_field :image, class: "input", accept: "image/*", autofocus: true,
+    <%= form.file_field :image, class: "input", accept: "image/png, image/jpeg, image/jpg, image/webp", autofocus: true,
         data: { upload_preview_target: "input", action: "upload-preview#previewImage" } %>
   </label>
   <div class="flex align-center gap margin-block">

@@ -9,7 +9,7 @@
     <% end %>
 
     <div class="breadcrumbs flex-item-justify-start">
-      <%= link_to books_path do %>
+      <%= link_to root_path do %>
         <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
       <% end %> ▸
       <%= link_to @page.book.title, @page.book %> ▸

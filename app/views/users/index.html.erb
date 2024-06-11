@@ -2,13 +2,13 @@
 
 <% content_for :header do %>
   <nav>
-    <%= link_to books_path, class: "btn flex-item-justify-start" do %>
+    <%= link_to root_path, class: "btn flex-item-justify-start" do %>
       <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Go back</span>
     <% end %>
 
     <div class="breadcrumbs flex-item-justify-start">
-      <%= link_to books_path do %>
+      <%= link_to root_path do %>
         <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
       <% end %> ▸
       <%= image_tag "people.svg", aria: { label: "People" }, size: 19, class: "colorize--black", alt: "People" %>

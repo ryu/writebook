@@ -1,11 +1,13 @@
 class Leaf < ApplicationRecord
-  include Editable, Positionable, Status
+  include Editable, Positionable
 
   belongs_to :book, touch: true
   positioned_within :book, association: :leaves
-
   delegated_type :leafable, types: Leafable::TYPES, dependent: :destroy
 
+  enum :status, %w[ draft published trashed ].index_by(&:itself), default: :draft
+
+  scope :active, -> { where.not(status: :trashed) }
   scope :with_leafables, -> { includes(:leafable) }
 
   def public_param

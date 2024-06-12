@@ -259,6 +259,8 @@ export default class extends Controller {
   }
 
   #buildLayer() {
+    const fragment = document.createDocumentFragment()
+
     for (const [ index, item ] of this.itemTargets.entries()) {
       const selected = index >= this.#selectionStart && index <= this.#selectionEnd
       const clone = selected ? this.#makePlaceholder() : item.cloneNode(true)
@@ -267,10 +269,11 @@ export default class extends Controller {
       clone.style.pointerEvents = "none"
       clone.style.transition = "top 160ms, left 160ms"
 
-      this.layerTarget.append(clone)
+      fragment.append(clone)
       item.clone = clone
     }
 
+    this.layerTarget.append(fragment)
     this.#updateLayer()
   }
 

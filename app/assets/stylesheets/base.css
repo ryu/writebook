@@ -87,6 +87,30 @@ a:not([class]) {
   block-size: 50dvh;
 }
 
+.product-logo {
+  --border-radius: 1.5em;
+
+  block-size: 7em;
+  inline-size: 7em;
+}
+
+.btn:is(.btn--plain.product-logo--footer) {
+  --btn-border-radius: var(--btn-size);
+
+  overflow: hidden;
+  transition: filter 200ms ease, opacity 200ms ease;
+
+  @media (hover: hover) {
+    filter: grayscale(1);
+    opacity: 0.5;
+
+    &:where(:not(:active):hover) {
+      filter: none;
+      opacity: 1;
+    }
+  }
+}
+
 /* Turbo */
 turbo-frame {
   display: contents;

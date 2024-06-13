@@ -13,14 +13,12 @@ export default class extends Controller {
   }
 
   change(event) {
-    if (event.target.form && event.target.form !== this.element) {
-      return
-    }
-
-    if (!this.#timer) {
-      this.#timer = setTimeout(() => this.#save(), AUTOSAVE_INTERVAL)
-      this.element.classList.add(this.dirtyClass)
-      this.element.classList.remove(this.cleanClass)
+    if (event.target.form === this.element) {
+      if (!this.#timer) {
+        this.#timer = setTimeout(() => this.#save(), AUTOSAVE_INTERVAL)
+        this.element.classList.add(this.dirtyClass)
+        this.element.classList.remove(this.cleanClass)
+      }
     }
   }
 

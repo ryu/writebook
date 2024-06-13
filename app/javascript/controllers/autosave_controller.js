@@ -12,7 +12,11 @@ export default class extends Controller {
     this.#save()
   }
 
-  change() {
+  change(event) {
+    if (event.target.form && event.target.form !== this.element) {
+      return
+    }
+
     if (!this.#timer) {
       this.#timer = setTimeout(() => this.#save(), AUTOSAVE_INTERVAL)
       this.element.classList.add(this.dirtyClass)

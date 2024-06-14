@@ -38,6 +38,7 @@
   display: inline-flex;
   flex-direction: column;
   margin: 0;
+  scroll-margin-top: 8em;
   text-align: center;
 
   .toc__container:where(:has(#toc-list:checked)) & {

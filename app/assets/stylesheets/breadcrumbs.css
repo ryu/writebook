@@ -6,6 +6,7 @@
 
   > * {
     overflow: hidden;
+    max-inline-size: 30ch;
     text-overflow: ellipsis;
     white-space: nowrap;
   }

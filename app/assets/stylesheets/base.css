@@ -92,12 +92,14 @@ a:not([class]) {
   --border-radius: 1.5em;
 
   block-size: 7em;
+  flex-shrink: 0;
   inline-size: 7em;
 }
 
 .btn:is(.btn--plain.product-logo--footer) {
   --btn-border-radius: var(--btn-size);
 
+  flex-shrink: 0;
   overflow: hidden;
   transition: filter 200ms ease, opacity 200ms ease;
 

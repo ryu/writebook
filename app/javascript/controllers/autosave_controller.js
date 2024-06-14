@@ -8,31 +8,52 @@ export default class extends Controller {
 
   #timer
 
-  submit() {
-    this.#save()
+  // Lifecycle
+
+  disconnect() {
+    this.submit()
   }
 
-  change(event) {
-    if (event.target.form === this.element) {
-      if (!this.#timer) {
-        this.#timer = setTimeout(() => this.#save(), AUTOSAVE_INTERVAL)
-        this.element.classList.add(this.dirtyClass)
-        this.element.classList.remove(this.cleanClass)
-      }
+  // Actions
+
+  async submit() {
+    if (this.#dirty) {
+      await this.#save()
     }
   }
 
-  async #save() {
-    this.#resetTimer()
+  change(event) {
+    if (event.target.form === this.element && !this.#dirty) {
+      this.#scheduleSave()
+      this.#updateAppearance()
+    }
+  }
 
-    this.element.classList.add(this.savingClass)
+  // Private
+
+  async #save() {
+    this.#updateAppearance(true)
+    this.#resetTimer()
     await submitForm(this.element)
-    this.element.classList.remove(this.dirtyClass, this.savingClass)
-    this.element.classList.add(this.cleanClass)
+    this.#updateAppearance()
+  }
+
+  #updateAppearance(saving = false) {
+    this.element.classList.toggle(this.cleanClass, !this.#dirty)
+    this.element.classList.toggle(this.dirtyClass, this.#dirty)
+    this.element.classList.toggle(this.savingClass, saving)
+  }
+
+  #scheduleSave() {
+    this.#timer = setTimeout(() => this.#save(), AUTOSAVE_INTERVAL)
   }
 
   #resetTimer() {
     clearTimeout(this.#timer)
     this.#timer = null
+  }
+
+  get #dirty() {
+    return !!this.#timer
   }
 }

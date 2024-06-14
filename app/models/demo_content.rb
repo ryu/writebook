@@ -15,7 +15,7 @@ class DemoContent
       end
 
       def demo_page
-        Page.new(body: "# Welcome to Writebook. \n\nYour new book begins here.")
+        Page.new(body: load_markdown("introduction.md"))
       end
 
       def demo_picture
@@ -28,6 +28,10 @@ class DemoContent
           filename: filename,
           content_type: content_type
         }
+      end
+
+      def load_markdown(filename)
+        File.read(Rails.root.join("app/assets/markdown/demo/#{filename}"))
       end
   end
 end

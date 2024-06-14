@@ -5,10 +5,15 @@
   min-width: 0;
 
   > * {
+    flex-shrink: 0;
+    max-inline-size: 40ch;
     overflow: hidden;
-    max-inline-size: 30ch;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  > strong {
+    flex-shrink: 1;
   }
 
   input {

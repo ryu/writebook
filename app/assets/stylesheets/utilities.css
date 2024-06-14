@@ -59,6 +59,7 @@
 .flex-wrap { flex-wrap: wrap; }
 
 .flex-item-grow { flex-grow: 1; }
+.flex-item-shrink { flex-shrink: 1; }
 .flex-item-no-shrink { flex-shrink: 0; }
 .flex-item-justify-start { margin-inline-end: auto; }
 .flex-item-justify-end { margin-inline-start: auto; }

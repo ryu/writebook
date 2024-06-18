@@ -42,6 +42,7 @@
 
 .book__cover--remove {
   margin-block-start: calc(var(--block-space) * -1);
+  z-index: 0;
 }
 
 .book__form {

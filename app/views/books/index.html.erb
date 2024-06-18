@@ -3,20 +3,18 @@
 
 <% content_for :header do %>
   <nav>
-    <span class="btn btn--placeholder" aria-hidden="true"></span>
-
-    <span class="product-logo--footer btn btn--plain txt-large flex-item-justify-end", target="_blank">
+    <span class="product-logo--footer btn btn--plain txt-large center", target="_blank">
       <%= image_tag "app-icon-192.png", size: 24 %>
       <span class="for-screen-reader">Writebook</span>
     </span>
 
     <% if Current.user %>
-      <%= link_to users_path, class: "btn flex-item-justify-end" do %>
+      <%= link_to users_path, class: "btn" do %>
         <%= image_tag "people.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader">Manage people</span>
       <% end %>
     <% else %>
-      <%= link_to new_session_path, class: "btn flex-item-justify-end" do %>
+      <%= link_to new_session_path, class: "btn" do %>
         <%= image_tag "login-keys.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader">Sign in</span>
       <% end %>

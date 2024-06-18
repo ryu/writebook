@@ -109,16 +109,9 @@
 }
 
 /* Variants */
-.btn--plain {
-  --btn-border-radius: 0.5em;
+.btn--borderless {
   --btn-border-size: 0;
-  --btn-padding: 0;
   --hover-size: 0;
-
-  img, svg {
-    block-size: 100%;
-    inline-size: 100%;
-  }
 }
 
 .btn--link {
@@ -133,9 +126,16 @@
   --outline-color: var(--color-negative);
 }
 
-.btn--placeholder {
-  pointer-events: none;
-  visibility: hidden;
+.btn--plain {
+  --btn-border-radius: 0.5em;
+  --btn-border-size: 0;
+  --btn-padding: 0;
+  --hover-size: 0;
+
+  img, svg {
+    block-size: 100%;
+    inline-size: 100%;
+  }
 }
 
 .btn--positive {

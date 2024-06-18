@@ -5,16 +5,16 @@
     <%= link_to_previous_leafable(@leaf, hotkey: false, for_edit: true) %>
 
     <div class="breadcrumbs">
-      <%= link_to root_path do %>
-        <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
-      <% end %> ▸
-      <%= link_to @book.title, @book %> ▸
+      <%= render "books/index_link" %>
+      <span>▸</span>
+      <%= link_to @book.title, @book %>
+      <span>▸</span>
       <%= form_with model: [ @book, @leaf ], url: leafable_path(@leaf), class: "flex align-center gap-half flex-item-shrink", format: :html do |form| %>
         <strong class="min-width"><%= form.text_field :title, form: "page-editor", class: "input full-width", autocomplete: "off" %></strong>
       <% end %>
     </div>
 
-    <button class="btn flex-item-justify-end" data-action="fullscreen#toggle" data-fullscreen-target="button">
+    <button class="btn" data-action="fullscreen#toggle" data-fullscreen-target="button">
       <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Enter fullscreen</span>
     </button>

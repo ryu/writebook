@@ -3,16 +3,16 @@
 
 <% content_for :header do %>
   <nav>
-    <%= link_to edit_leafable_path(@leaf), class: "btn flex-item-justify-start" do %>
+    <%= link_to edit_leafable_path(@leaf), class: "btn" do %>
       <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Go back</span>
     <% end %>
 
-    <div class="breadcrumbs flex-item-justify-start">
-      <%= link_to root_path do %>
-        <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
-      <% end %> ▸
-      <%= link_to @leaf.book.title, @leaf.book %> ▸
+    <div class="breadcrumbs">
+      <%= render "books/index_link" %>
+      <span>▸</span>
+      <%= link_to @leaf.book.title, @leaf.book %>
+      <span>▸</span>
       <strong><%= @leaf.title %></strong>
     </div>
   </nav>

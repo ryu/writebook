@@ -41,7 +41,7 @@
   }
 }
 
-.arrangement-adding-mode {
+.arrangement--adding {
   .arrangement__item {
     * {
       pointer-events: none;
@@ -54,20 +54,25 @@
 }
 
 .arrangement-drag-image {
-  position: fixed;
-  bottom: 100%;
-  right: 100%;
-  padding: 0 1rem;
-  line-height: 2rem;
   background-color: var(--color-link);
-  color: white;
   border-radius: 1rem;
+  color: var(--color-ink-reversed);
+  inset: auto 100% 100% auto;
+  line-height: 2rem;
+  padding: 0 1rem;
+  position: fixed;
   text-wrap: nowrap;
 }
 
 .btn:is(.arrangement__handle) {
   display: none;
   flex-shrink: 0;
+}
+
+.arrangement-placeholder {
+  background-color: var(--color-subtle-light);
+  border: 1px dashed var(--color-subtle-dark);
+  border-radius: 0.2em;
 }
 
 .arrangement-selected {
@@ -77,10 +82,4 @@
   .arrangement-move-mode & {
     animation: pulse 1000ms infinite;
   }
-}
-
-.arrangement-placeholder {
-  background-color: var(--color-subtle-light);
-  border: 1px dashed var(--color-subtle-dark);
-  border-radius: 0.2em;
 }

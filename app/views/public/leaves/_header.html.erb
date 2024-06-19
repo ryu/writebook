@@ -2,7 +2,7 @@
   <%= link_to_previous_leafable(leaf) %>
 
   <div class="breadcrumbs">
-    <%= link_to public_book_path(book.slug), class: "btn btn--borderless txt-small" do %>
+    <%= link_to public_book_path(book.slug), class: "btn borderless txt-small" do %>
       <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Home" %>
     <% end %>
     <span>▸</span>

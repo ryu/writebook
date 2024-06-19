@@ -1,7 +1,7 @@
 <% content_for(:title) { "Set up Writebook" } %>
 
 <div class="panel shadow center margin-block-double <%="shake" if flash[:alert] %>">
-  <%= image_tag "app-icon-192.png", class: "product-logo center margin-block-end-double pad colorize--black border-radius", size: 130 %>
+  <%= image_tag "app-icon-192.png", class: "product__logo center margin-block-end-double pad colorize--black border-radius", size: 130 %>
 
   <%= form_with model: @user, url: first_run_path, class: "flex flex-column gap" do |form| %>
     <div class="flex align-center gap">

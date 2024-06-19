@@ -109,11 +109,6 @@
 }
 
 /* Variants */
-.btn--borderless {
-  --btn-border-size: 0;
-  --hover-size: 0;
-}
-
 .btn--link {
   --btn-background: var(--color-link);
   --btn-color: var(--color-ink-reversed);

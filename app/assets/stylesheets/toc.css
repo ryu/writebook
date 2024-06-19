@@ -232,7 +232,7 @@
   --btn-background: var(--color-link);
 }
 
-.blank-slate {
+.toc__blank-slate{
   display: flex;
   margin-inline-start: 2em;
   padding: 1.5em 0;

@@ -81,7 +81,6 @@
 .max-width { max-inline-size: 100%; }
 .min-content { inline-size: min-content; }
 .max-inline-size { max-inline-size: 100%; }
-.constrain-height { max-block-size: var(--max-height, 50vh); }
 
 /* Overflow */
 .overflow-x { overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
@@ -229,14 +228,3 @@
 /* Visibility */
 [hidden] { display: none; }
 [contents] { display: contents; }
-
-/* Printing */
-@page {
-  margin: 1in;
-}
-
-@media print {
-  .no-print {
-    display: none;
-  }
-}

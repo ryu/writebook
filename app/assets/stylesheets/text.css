@@ -92,21 +92,20 @@ b, strong {
 }
 
 :is(pre, code, .pre, .code) {
-  border-radius: 0.3em;
   background-color: var(--color-subtle-light);
   border: 1px solid var(--color-subtle);
+  border-radius: 0.3em;
   font-family: var(--font-mono);
   font-size: 0.85em;
 }
 
 code {
-  white-space: pre-wrap;
   padding: 0.1em 0.3em;
+  white-space: pre-wrap;
 }
 
-pre {
+:is(pre, .pre) {
   border-radius: 0.5em;
-  font-family: var(--font-mono);
   padding: 0.5lh 2ch;
 
   :is(code, .code) {
@@ -122,7 +121,7 @@ p {
   letter-spacing: -0.005ch;
 }
 
-:is(.quote, blockquote) {
+:is(blockquote, .quote) {
   font-style: italic;
   margin: 0 3ch;
 
@@ -137,8 +136,8 @@ table {
   margin: 1lh 0;
 }
 
-thead td {
-  font-weight: 500;
+th {
+  font-weight: 700;
 }
 
 :where(th, td) {

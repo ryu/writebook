@@ -137,7 +137,7 @@
   --btn-padding: 0;
   --hover-size: 0;
 
-  img, svg {
+  :is(img, svg) {
     block-size: 100%;
     inline-size: 100%;
   }

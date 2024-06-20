@@ -2,7 +2,8 @@
 <% turbo_page_requires_reload %>
 
 <div class="panel shadow center margin-block-double <%= "shake" if flash[:alert] %>">
-  <%= image_tag "app-icon-192.png", class: "product__logo center margin-block-end-double pad colorize--black border-radius", size: 130 %>
+  <%= image_tag "writebook-icon.svg", class: "product__logo center colorize--black", size: 130 %>
+  <h1 class="txt-x- large margin-none-block-start margin-block-end-double">Writebook</h1>
 
   <%= form_with url: session_url, class: "flex flex-column gap" do |form| %>
     <div class="flex align-center gap">

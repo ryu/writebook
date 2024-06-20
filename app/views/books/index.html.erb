@@ -1,12 +1,12 @@
-<% content_for(:title) { "Library" } %>
+<% content_for(:title) { "Library | Writebook" } %>
 <% @layout_class = "books" %>
 
 <% content_for :header do %>
   <nav>
     <span class="btn btn--placeholder" aria-hidden="true"></span>
 
-    <span class="product__logo--footer btn btn--plain txt-large center", target="_blank">
-      <%= image_tag "app-icon-192.png", size: 24 %>
+    <span class="btn btn--plain txt-large center", target="_blank">
+      <%= image_tag "writebook-icon.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Writebook</span>
     </span>
 

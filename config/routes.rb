@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :books, constraints: { id: /\d+(-.+)?/ } do
+  resources :books, path: "/", constraints: { id: /\d+(-.+)?/ } do
     resource :publication, controller: "books/publications", only: %i[ show edit update ]
     resource :bookmark, controller: "books/bookmarks", only: :show
 

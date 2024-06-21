@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :books except: %i[ index show ] do
+  resources :books, except: %i[ index show ] do
     resource :publication, controller: "books/publications", only: %i[ show edit update ]
     resource :bookmark, controller: "books/bookmarks", only: :show
 
@@ -33,8 +33,16 @@ Rails.application.routes.draw do
     resources :pages
   end
 
-  get "/:id/:slug", to: "books#show", as: :book_slug
-  get "/:book_id/:book_slug/:id/:slug", to: "leafables#show", as: :leafable_slug
+  get "/:id/:slug", to: "books#show"
+  get "/:book_id/:book_slug/:id/:slug", to: "leafables#show"
+
+  direct :book_slug do |book, options|
+    { controller: "books", action: "show", id: book, slug: book.slug }.merge(options)
+  end
+
+  direct :leafable_slug do |leaf, options|
+    { controller: "leafables", action: "show", book_id: leaf.book, book_slug: leaf.book.slug, id: leaf, slug: leaf.slug }.merge(options)
+  end
 
   resources :pages, only: [] do
     scope module: "pages" do

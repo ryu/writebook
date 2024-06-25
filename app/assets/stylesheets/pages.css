@@ -5,6 +5,13 @@
 #main:has(.page--picture:not(.picture-form)) {
   inline-size: 100%;
   padding: 0;
+
+  figcaption {
+    inline-size: 67ch;
+    margin-inline: auto;
+    max-inline-size: 100dvw;
+    padding-inline: clamp(var(--inline-space), 5%, calc(var(--inline-space) * 3));
+  }
 }
 
 :has(#section_theme[value=dark]:checked),

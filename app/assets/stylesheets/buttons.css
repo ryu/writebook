@@ -14,7 +14,7 @@
   display: inline-flex;
   font-size: 1em;
   font-weight: 600;
-  gap: 0.5em;
+  gap: var(--btn-gap, 0.5em);
   justify-content: center;
   padding: var(--btn-padding, 0.5em 1.1em);
   pointer-events: auto;
@@ -25,18 +25,20 @@
     filter var( --transition),
     opacity var( --transition);
 
+  img {
+    -webkit-touch-callout: none;
+
+    user-select: none;
+  }
+
   /* Default icon styles */
   &:where(:has(img, svg)) {
     text-align: start;
 
     img, svg {
-      -webkit-touch-callout: none;
-      aspect-ratio: 1;
-      block-size: calc(var(--btn-size) / 1.9);
-      inline-size: calc(var(--btn-size) / 1.9);
+      block-size: var(--btn-icon-size, 1.3em);
+      inline-size: var(--btn-icon-size, 1.3em);
       max-inline-size: unset;
-      pointer-events: none;
-      user-select: none;
     }
 
     img:not([class]) {
@@ -132,7 +134,7 @@
   --btn-padding: 0;
   --hover-size: 0;
 
-  :is(img, svg) {
+  &:not(:has(.for-screen-reader)):is(img, svg) {
     block-size: 100%;
     inline-size: 100%;
   }

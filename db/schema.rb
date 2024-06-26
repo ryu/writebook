@@ -79,7 +79,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_06_25_224312) do
     t.boolean "published", default: false, null: false
     t.string "slug", null: false
     t.boolean "everyone_access", default: true, null: false
-    t.integer "theme", default: 0, null: false
+    t.string "theme", default: "blue", null: false
     t.index ["published"], name: "index_books_on_published"
   end
 

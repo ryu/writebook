@@ -19,11 +19,10 @@
 }
 
 .library__book--empty {
-  position: relative;
+  display: inline-grid;
+  place-items: center;
 
-  h2 {
-    inset: 50% 0 0 0;
-    margin-block-start: calc(var(--block-space) * -3);
-    position: absolute;
+  * {
+    grid-area: 1 / 1;
   }
 }

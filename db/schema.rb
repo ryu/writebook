@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_06_25_202351) do
+ActiveRecord::Schema[8.0].define(version: 2024_06_25_224312) do
   create_table "accesses", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "book_id", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_06_25_202351) do
     t.string "join_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "custom_styles"
   end
 
   create_table "action_text_markdowns", force: :cascade do |t|

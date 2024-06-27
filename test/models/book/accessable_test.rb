@@ -9,7 +9,7 @@ class Book::AccessableTest < ActiveSupport::TestCase
 
     User.all.each do |user|
       assert book.accessable?(user: user)
-      assert_not book.editable?(user: user)
+      assert_not book.editable?(user: user) unless user.administrator?
     end
   end
 

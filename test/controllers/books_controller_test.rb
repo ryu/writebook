@@ -56,8 +56,9 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "create sets additional accesses" do
+    sign_in :jason
     assert_difference -> { Book.count }, +1 do
-      post books_url, params: { book: { title: "New Book", everyone_access: false }, "editor_ids[]": users(:jz).id, "reader_ids[]": users(:jason).id }
+      post books_url, params: { book: { title: "New Book", everyone_access: false }, "editor_ids[]": users(:jz).id, "reader_ids[]": users(:kevin).id }
     end
 
     book = Book.last
@@ -66,8 +67,8 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
     assert book.editable?(user: users(:jz))
 
-    assert book.accessable?(user: users(:jason))
-    assert_not book.editable?(user: users(:jason))
+    assert book.accessable?(user: users(:kevin))
+    assert_not book.editable?(user: users(:kevin))
   end
 
   test "show only shows books the current user can access" do

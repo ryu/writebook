@@ -78,4 +78,12 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     get book_slug_url(books(:handbook))
     assert_response :success
   end
+
+  test "show includes OG metadata for public access" do
+    get book_slug_url(books(:handbook))
+    assert_response :success
+
+    assert_select "meta[property='og:title'][content='Handbook']"
+    assert_select "meta[property='og:url'][content='#{book_slug_url(books(:handbook))}']"
+  end
 end

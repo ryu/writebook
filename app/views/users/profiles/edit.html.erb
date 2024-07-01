@@ -21,7 +21,7 @@
 <% end %>
 
 <div class="panel margin-block-double shadow center">
-  <%= form_with model: @user, class: "flex flex-column gap" do |form| %>
+  <%= form_with model: @user, url: user_profile_path(@user), class: "flex flex-column gap" do |form| %>
     <%= form.hidden_field :role %>
     <div class="flex align-center gap margin-block-start">
       <%= translation_button(:user_name) %>

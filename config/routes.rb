@@ -52,7 +52,11 @@ Rails.application.routes.draw do
   end
 
   resources :qr_code, only: :show
-  resources :users
+  resources :users do
+    scope module: "users" do
+      resource :profile
+    end
+  end
 
   direct :leafable do |leaf, options|
     route_for "book_#{leaf.leafable_name}", leaf.book, leaf, options

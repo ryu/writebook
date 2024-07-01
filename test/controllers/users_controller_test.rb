@@ -33,14 +33,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal user.id, Session.find_by(token: parsed_cookies.signed[:session_token]).user.id
   end
 
-  test "edit is accessable to the current user" do
-    sign_in :david
+  test "creating a new user with an existing email address redirects to login screen" do
+    assert_no_difference -> { User.count } do
+      post join_url(@join_code), params: { user: { name: "Another David", email_address: users(:david).email_address, password: "secret123456" } }
+    end
 
-    get edit_user_url(users(:david))
-    assert_response :success
-
-    get edit_user_url(users(:kevin))
-    assert_response :forbidden
+    assert_redirected_to new_session_url(email_address: users(:david).email_address)
   end
 
   test "update" do
@@ -53,34 +51,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert users(:kevin).reload.administrator?
   end
 
-  test "update allows non-admin users to change their own settings" do
-    sign_in :kevin
-    assert_not users(:kevin).administrator?
-
-    put user_url(users(:kevin)), params: { user: { name: "Bob" } }
-
-    assert_redirected_to users_url
-    assert_equal "Bob", users(:kevin).reload.name
-  end
-
   test "update does not allow non-admins to change roles" do
     sign_in :kevin
     assert_not users(:kevin).administrator?
 
     put user_url(users(:kevin)), params: { user: { role: "administrator" } }
 
-    assert_redirected_to users_url
-    assert_not users(:kevin).reload.administrator?
-  end
-
-  test "update does not allow non-admins to change other user's settings" do
-    sign_in :kevin
-    assert_not users(:kevin).administrator?
-
-    put user_url(users(:david)), params: { user: { name: "Bob" } }
-
     assert_response :forbidden
-    assert_equal "David", users(:david).reload.name
+    assert_not users(:kevin).reload.administrator?
   end
 
   test "destroy" do
@@ -94,18 +72,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_nil User.active.find_by(id: users(:kevin).id)
   end
 
-  test "non-admins cannot perform actions" do
+  test "destroy is not allowed to non-admins" do
     sign_in :kevin
 
     delete user_url(users(:david))
     assert_response :forbidden
-  end
-
-  test "creating a new user with an existing email address will redirect to login screen" do
-    assert_no_difference -> { User.count } do
-      post join_url(@join_code), params: { user: { name: "Another David", email_address: users(:david).email_address, password: "secret123456" } }
-    end
-
-    assert_redirected_to new_session_url(email_address: users(:david).email_address)
   end
 end

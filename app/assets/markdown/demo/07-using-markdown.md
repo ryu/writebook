@@ -83,14 +83,14 @@ Writebook also supports `HTML` formatting in your pages. Tags like `<p>`, `<img>
 
 <p style="text-align: center">This is centered</p>
 
-### Open a link in a new window
+### Open a link in a new tab/window
 Use an `HTML` `a` element with the `target` attribute set to `_blank` (the preceding underscore is important) like this:
 
 ```
-<a href="https://books.37signals.com" target="_blank">This opens in a new window</a>
+<a href="https://books.37signals.com" target="_blank">This opens in a new tab/window</a>
 ```
 
-<a href="https://books.37signals.com" target="_blank">This opens in a new window</a>
+<a href="https://books.37signals.com" target="_blank">This opens in a new tab/window</a>
 
 
 ***

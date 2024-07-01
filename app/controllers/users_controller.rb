@@ -2,9 +2,8 @@ class UsersController < ApplicationController
   require_unauthenticated_access only: %i[ new create ]
 
   before_action :verify_join_code, only: %i[ new create ]
-  before_action :ensure_can_administer, only: :destroy
-  before_action :set_user, only: %i[ show update edit destroy ]
-  before_action :ensure_current_user, only: :edit
+  before_action :ensure_can_administer, only: %i[ update destroy ]
+  before_action :set_user, only: %i[ update destroy ]
 
 
   def index
@@ -23,22 +22,8 @@ class UsersController < ApplicationController
     redirect_to new_session_url(email_address: user_params[:email_address])
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def update
-    case
-    when Current.user.can_administer?
-      @user.update(user_params.merge(role_params))
-    when @user.current?
-      @user.update(user_params)
-    else
-      head :forbidden and return
-    end
-
+    @user.update(role_params)
     redirect_to users_url
   end
 
@@ -62,9 +47,5 @@ class UsersController < ApplicationController
 
     def verify_join_code
       head :not_found if Current.account.join_code != params[:join_code]
-    end
-
-    def ensure_current_user
-      head :forbidden unless @user == Current.user
     end
 end

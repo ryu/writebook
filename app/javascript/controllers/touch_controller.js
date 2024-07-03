@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-const SWIPE_THRESHOLD = 50
+const SWIPE_THRESHOLD = 30
 
 export default class extends Controller {
   connect() {
@@ -14,7 +14,6 @@ export default class extends Controller {
   }
 
   #handleTouchEnd(event) {
-    console.log(this.#isSelection)
     if (this.#isSelection) return
 
     const endX = event.changedTouches[0].clientX

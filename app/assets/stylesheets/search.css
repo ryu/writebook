@@ -1,0 +1,22 @@
+.search__results {
+  position: fixed;
+  top: 8rem;
+  right: 4rem;
+  left: 4rem;
+  padding: 1rem;
+  border-radius: 6px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search__result {
+  a {
+    text-decoration: none;
+  }
+}
+
+.search__no_matches {
+  text-align: center;
+}

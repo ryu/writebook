@@ -1,0 +1,5 @@
+<%= turbo_frame_tag :search do %>
+  <%= form_with url: book_search_url(book) do |f| %>
+    <%= f.search_field :search %>
+  <% end %>
+<% end %>

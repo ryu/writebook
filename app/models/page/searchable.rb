@@ -11,12 +11,12 @@ module Page::Searchable
   end
 
   class_methods do
-    def sync_search_index
-      all.map &:sync_search_index
+    def reindex_all
+      all.map &:reindex
     end
   end
 
-  def sync_search_index
+  def reindex
     update_in_search_index
   end
 
@@ -26,8 +26,10 @@ module Page::Searchable
     end
 
     def update_in_search_index
-      updated = execute_sql_with_binds "update page_search_index set body = ? where rowid = ?", plain_text, id
-      create_in_search_index unless updated
+      transaction do
+        updated = execute_sql_with_binds "update page_search_index set body = ? where rowid = ?", plain_text, id
+        create_in_search_index unless updated
+      end
     end
 
     def remove_from_search_index

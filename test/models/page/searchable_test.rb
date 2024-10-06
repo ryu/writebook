@@ -2,7 +2,7 @@ require "test_helper"
 
 class Page::SearchableTest < ActiveSupport::TestCase
   setup do
-    Page.all.map &:touch # Ensure all pages are indexed
+    Page.reindex_all
   end
 
   test "page body is indexed and searchable" do

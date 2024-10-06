@@ -3,7 +3,8 @@ require "test_helper"
 class Books::SearchesControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in :kevin
-    Page.all.map &:touch
+
+    Page.reindex_all
   end
 
   test "create finds matching pages" do

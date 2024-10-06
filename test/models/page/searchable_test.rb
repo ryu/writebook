@@ -10,8 +10,8 @@ class Page::SearchableTest < ActiveSupport::TestCase
     assert_includes pages, pages(:welcome)
   end
 
-  test "search results can include match snippet" do
-    pages = Page.search_in("great handbook")
+  test "highlighting matches" do
+    pages = Page.highlight_matches("great handbook")
     assert_includes pages.first.match, "<mark>great</mark> <mark>handbook</mark>"
   end
 end

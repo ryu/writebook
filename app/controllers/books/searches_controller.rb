@@ -3,7 +3,7 @@ class Books::SearchesController < ApplicationController
 
   def create
     @pages = if query.present?
-      book_pages.search_in(query).limit(50)
+      book_pages.highlight_matches(query).limit(50)
     else
       Page.none
     end

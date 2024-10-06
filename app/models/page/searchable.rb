@@ -6,8 +6,8 @@ module Page::Searchable
     after_update_commit  :update_in_search_index
     after_destroy_commit :remove_from_search_index
 
-    scope :search,    ->(query) { joins("join page_search_index idx on pages.id = idx.rowid").where("idx.body match ?", query) }
-    scope :search_in, ->(query) { search(query).select("pages.*, snippet(page_search_index, 0, '<mark>', '</mark>', '...', 20) as match") }
+    scope :search, ->(query) { joins("join page_search_index idx on pages.id = idx.rowid").where("idx.body match ?", query) }
+    scope :highlight_matches, ->(query) { search(query).select("pages.*, snippet(page_search_index, 0, '<mark>', '</mark>', '...', 20) as match") }
   end
 
   class_methods do

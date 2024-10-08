@@ -4,7 +4,7 @@ class Books::SearchesControllerTest < ActionDispatch::IntegrationTest
   setup do
     sign_in :kevin
 
-    Page.reindex_all
+    Leaf.reindex_all
   end
 
   test "create finds matching pages" do

@@ -1,0 +1,23 @@
+require "test_helper"
+
+class Leaf::SearchableTest < ActiveSupport::TestCase
+  setup do
+    Leaf.reindex_all
+  end
+
+  test "leaf body is indexed and searchable" do
+    leaves = Leaf.search("great handbook")
+    assert_includes leaves, leaves(:welcome_page)
+  end
+
+  test "highlighting matches" do
+    leaves = Leaf.highlight_matches("great handbook")
+    assert_includes leaves.first.title_match, "The <mark>Handbook</mark>"
+    assert_includes leaves.first.content_match, "<mark>great</mark> <mark>handbook</mark>"
+  end
+
+  test "leaves with no searchable content are not indexed" do
+    leaves = Leaf.search("welcome")
+    assert_not_includes leaves, leaves(:welcome_section)
+  end
+end

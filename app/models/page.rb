@@ -1,5 +1,5 @@
 class Page < ApplicationRecord
-  include Leafable, Searchable
+  include Leafable
 
   cattr_accessor :preview_renderer do
     renderer = Redcarpet::Render::HTML.new(ActionText::Markdown::DEFAULT_RENDERER_OPTIONS)
@@ -8,12 +8,8 @@ class Page < ApplicationRecord
 
   has_markdown :body
 
-  def plain_text
-    ActionText::Content.new(html_body).to_plain_text
-  end
-
-  def html_body
-    rendered_html(markdown_source)
+  def searchable_content
+    plain_text
   end
 
   def html_preview
@@ -21,6 +17,11 @@ class Page < ApplicationRecord
   end
 
   private
+    def plain_text
+      html_body = rendered_html(markdown_source)
+      ActionText::Content.new(html_body).to_plain_text
+    end
+
     def rendered_html(source)
       preview_renderer.render(source)
     end

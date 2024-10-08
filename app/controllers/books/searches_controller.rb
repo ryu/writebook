@@ -2,10 +2,10 @@ class Books::SearchesController < ApplicationController
   include BookScoped
 
   def create
-    @pages = if query.present?
-      book_pages.highlight_matches(query).limit(50)
+    @leaves = if query.present?
+      book_leaves.highlight_matches(query).limit(50)
     else
-      Page.none
+      Leaf.none
     end
   end
 
@@ -14,7 +14,7 @@ class Books::SearchesController < ApplicationController
       params[:search]&.gsub(/[^[:word:]]/, " ")
     end
 
-    def book_pages
-      Page.joins(:leaf).where(leaves: { book: @book }).merge(Leaf.positioned)
+    def book_leaves
+      @book.leaves.positioned
     end
 end

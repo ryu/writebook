@@ -159,5 +159,5 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_28_005927) do
 
   # Virtual tables defined in this database.
   # Note that virtual tables may not work with other database engines. Be careful if changing database.
-  create_virtual_table "page_search_index", "fts5", ["body", "tokenize='porter'"]
+  create_virtual_table "leaf_search_index", "fts5", ["title", "content", "tokenize='porter'"]
 end

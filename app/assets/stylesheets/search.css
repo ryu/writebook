@@ -16,3 +16,8 @@
     }
   }
 }
+
+mark {
+  color: var(--color-ink);
+  background-color: var(--color-highlight);
+}

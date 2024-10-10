@@ -11,7 +11,7 @@ class Leaf::SearchableTest < ActiveSupport::TestCase
   end
 
   test "highlighting matches" do
-    leaves = Leaf.highlight_matches("great handbook")
+    leaves = Leaf.search("great handbook")
     assert_includes leaves.first.title_match, "The <mark>Handbook</mark>"
     assert_includes leaves.first.content_match, "<mark>great</mark> <mark>handbook</mark>"
   end

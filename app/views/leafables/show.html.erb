@@ -14,7 +14,7 @@
   </div>
 <% elsif @leaf.page? %>
   <div class="page--page">
-    <%= sanitize_content @leaf.page.body.to_html %>
+    <%= sanitize_content highlight(@leaf.page.body.to_html, params[:search]) %>
   </div>
 <% elsif @leaf.picture? %>
   <figure class="page--picture flex flex-column align-center gap margin-none">

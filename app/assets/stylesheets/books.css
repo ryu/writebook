@@ -193,7 +193,7 @@
 
 .book__toolbar {
   inset-block-start: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Bookmarks */

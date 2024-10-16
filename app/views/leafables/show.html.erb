@@ -13,7 +13,7 @@
     <h1><%= simple_format @leaf.section.body %></h1>
   </div>
 <% elsif @leaf.page? %>
-  <div class="page--page">
+  <div class="page--page" data-controller="scroll-to-highlight">
     <%= sanitize_content highlight(@leaf.page.body.to_html, params[:search]) %>
   </div>
 <% elsif @leaf.picture? %>

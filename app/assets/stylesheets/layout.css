@@ -94,10 +94,10 @@ body {
 
 :where(#sidebar) {
   background-color: var(--color-subtle-light);
+  block-size: 100%;
   font-size: var(--font-medium-responsive);
   grid-area: sidebar;
   inline-size: 25vw;
-  block-size: 100%;
   overflow: auto;
   padding-block-start: var(--btn-size);
   transition: margin-inline-start 0.2s ease-out;

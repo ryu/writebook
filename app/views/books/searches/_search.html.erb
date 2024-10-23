@@ -19,7 +19,7 @@
           <%= search_field_tag :search, nil, form: "search_form", class: "search__input input full-width txt-large", autofocus: true, placeholder: "Type to find something in this book…" %>
         </div>
 
-        <button class="btn btn--reversed txt-medium" title="Submit search (enter)" form="search_form" type="submit">
+        <button class="btn btn--reversed txt-medium" title="Submit search (enter)" form="search_form" type="submit" tabindex="-1">
           <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
           <span class="for-screen-reader">Submit search</span>
         </button>

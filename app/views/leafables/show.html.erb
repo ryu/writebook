@@ -14,7 +14,7 @@
   </div>
 <% elsif @leaf.page? %>
   <div class="page--page" data-controller="scroll-to-highlight">
-    <%= sanitize_content highlight(@leaf.page.body.to_html, params[:search]) %>
+    <%= sanitize_content highlight(@leaf.page.body.to_html, params[:search], sanitize: false) %>
   </div>
 <% elsif @leaf.picture? %>
   <figure class="page--picture flex flex-column align-center gap margin-none">

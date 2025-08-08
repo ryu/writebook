@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
+# Install Ruby needed
+mise install
+
 # Use application binstubs
 export PATH="./bin:$PATH"
 

@@ -137,12 +137,7 @@ GEM
     erubi (1.13.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0)
     front_matter_parser (1.0.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -397,7 +392,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.3.5p100
+   ruby 3.4.7p58
 
 BUNDLED WITH
    2.5.18

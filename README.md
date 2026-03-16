@@ -29,3 +29,17 @@ You can configure the SSL setting with the following environment variables:
 
 - `SSL_DOMAIN` - enable automatic SSL via Let's Encrypt for the given domain name
 - `DISABLE_SSL` - alternatively, set `DISABLE_SSL` to serve over plain HTTP
+
+## Running in development
+
+Install dependencies:
+
+```sh
+bin/setup
+```
+
+Start the development server:
+
+```sh
+bin/dev
+```
